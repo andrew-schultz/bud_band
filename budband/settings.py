@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'budband.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +72,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'budband.wsgi.application'
 
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
+SPOTIFY_CLIENT_ID = env('SPOTIFY_CLIENT_ID')
+SPOTIFY_CLIENT_SECRET = env('SPOTIFY_CLIENT_SECRET')
+
+
+# REQUIRED_CONFIG = required_config = {
+#     'SPOTIFY_CLIENT_ID': os.environ.get('SPOTIFY_CLIENT_ID'),
+#     'SPOTIFY_CLIENT_SECRET': os.environ.get('SPOTIFY_CLIENT_SECRET'),
+# }
+
+# SPOTIFY_CLIENT_ID = required_config['SPOTIFY_CLIENT_ID']
+# SPOTIFY_CLIENT_SECRET = required_config['SPOTIFY_CLIENT_SECRET']
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -111,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -125,6 +142,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'api/static'),
+    os.path.join(BASE_DIR, 'bud_band/static'),
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

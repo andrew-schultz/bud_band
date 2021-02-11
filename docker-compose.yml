@@ -3,10 +3,15 @@ version: "3.9"
 services:
   db:
     image: postgres
+    ports:
+      - '5433:5432'
+    volumes:
+      - 'data:/data'
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      PGDATA: '/data'
+  
   django:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -16,3 +21,6 @@ services:
       - "8000:8000"
     depends_on:
       - db
+
+volumes:
+  data:

@@ -1,0 +1,90 @@
+{% load i18n admin_urls %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/comment_widget.css' %}">
+<div class="js-inline-admin-formset inline-group"
+     id="{{ inline_admin_formset.formset.prefix }}-group"
+     data-inline-type="stacked"
+     data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
+<fieldset class="module {{ inline_admin_formset.classes }}">
+  {% if inline_admin_formset.formset.max_num == 1 %}
+    <h2>{{ inline_admin_formset.opts.verbose_name|capfirst }}</h2>
+  {% else %}
+    <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
+  {% endif %}
+{{ inline_admin_formset.formset.management_form }}
+{{ inline_admin_formset.formset.non_form_errors }}
+{% for inline_admin_form in inline_admin_formset %}
+<div class="inline-related{% if inline_admin_form.original or inline_admin_form.show_url %} has_original{% endif %}{% if forloop.last and inline_admin_formset.has_add_permission %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
+  <!-- <h3><b>{{ inline_admin_formset.opts.verbose_name|capfirst }}:</b> <span class="inline_label">{% if inline_admin_form.original %}{{ inline_admin_form.original }}{% if inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %} <a href="{% url inline_admin_form.model_admin.opts|admin_urlname:'change' inline_admin_form.original.pk|admin_urlquote %}" class="{% if inline_admin_formset.has_change_permission %}inlinechangelink{% else %}inlineviewlink{% endif %}">{% if inline_admin_formset.has_change_permission %}{% translate "Change" %}{% else %}{% translate "View" %}{% endif %}</a>{% endif %} -->
+<!-- {% else %}#{{ forloop.counter }}{% endif %}</span> -->
+      <!-- {% if inline_admin_form.show_url %}<a href="{{ inline_admin_form.absolute_url }}">{% translate "View on site" %}</a>{% endif %} -->
+    <!-- {% if inline_admin_formset.formset.can_delete and inline_admin_formset.has_delete_permission and inline_admin_form.original %}<span class="delete">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</span>{% endif %} -->
+  <!-- </h3> -->
+  {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+  {% for fieldset in inline_admin_form %}
+    <p>{{fieldset.opts}}</p>
+    <fieldset class="module aligned comment">
+      {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+      {% if fieldset.description %}
+          <div class="description">{{ fieldset.description|safe }}</div>
+      {% endif %}
+      {% for line in fieldset %}
+          <div class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %} comment-field">
+              {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+              {% for field in line %}
+                  <div{% if not line.fields|length_is:'1' %} class="fieldBox{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
+                      {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+                      {% if field.is_checkbox %}
+                          {{ field.field }}{{ field.label_tag }}
+                      {% else %}
+                          {% if field.field.name == 'created_at' %}
+                          {% elif field.field.name == 'text'%}
+                          {% elif field.field.name == 'user'%}
+                          {% else %}
+                              {{ field.label_tag }}
+                          {% endif %}
+                          {% if field.is_readonly %}
+                              {% if field.field.name == "created_at" %}
+                                {% if field.contents != '-' %}
+                                  <div class="readonly comment_created_at">
+                                    {{ field.contents }}
+                                  </div>
+                                {% endif %}
+                              {% elif field.field.name == "text" %}
+                                <div class="readonly comment_text">
+                                  <!-- <div class="comment_text">{{ field.contents }}</div> -->
+                                  {{ field.contents }}
+                                </div>
+                              {% elif field.field.name == "user" %}
+                                <div class="readonly comment_user">
+                                  <!-- <div class="comment_text">{{ field.contents }}</div> -->
+                                  {{ field.contents }}
+                                </div>
+                              {% else %}
+                                <div class="readonly">{{ field.field.name }}</div>
+                              {% endif %}
+                          {% else %}
+                              {% if field.field.name == 'user' %}
+                                <div class='hidden'>
+                                  {{ field.field }}
+                                </div>
+                              {% else %}
+                                {{ field.field }}
+                              {% endif %}
+                          {% endif %}
+                      {% endif %}
+                      {% if field.field.help_text %}
+                          <div class="help">{{ field.field.help_text|safe }}</div>
+                      {% endif %}
+                  </div>
+              {% endfor %}
+          </div>
+      {% endfor %}
+  </fieldset>
+  {% endfor %}
+  {% if inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+  {% if inline_admin_form.fk_field %}{{ inline_admin_form.fk_field.field }}{% endif %}
+</div>{% endfor %}
+</fieldset>
+</div>
