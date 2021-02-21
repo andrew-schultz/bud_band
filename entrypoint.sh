@@ -1,5 +1,8 @@
 #!/bin/sh
 
+
+# UNCOMMENT WHEN RUNNING LOCALLY
+
 # if [ "$DATABASE" = "postgres" ]
 # then
 #     echo "Waiting for postgres..."
