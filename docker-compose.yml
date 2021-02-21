@@ -19,14 +19,9 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_PORT=5432
-      - POSTGRES_NAME=postgres
-      - POSTGRES_HOST=db
-      - PGDATA=/data
+      - data:/var/lib/postgresql/data
+    env_file:
+      ./.env.dev.db
 
   nginx:
     build: 

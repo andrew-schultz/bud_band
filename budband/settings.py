@@ -110,10 +110,11 @@ POSTGRES_PASSWORD = env('POSTGRES_PASSWORD')
 POSTGRES_NAME = env('POSTGRES_NAME')
 POSTGRES_HOST = env('POSTGRES_HOST')
 POSTGRES_PORT = env('POSTGRES_PORT')
+POSTGRES_ENGINE = env('POSTGRES_ENGINE')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': POSTGRES_ENGINE,
         'NAME': POSTGRES_NAME,
         'USER': POSTGRES_USER,
         'PASSWORD': POSTGRES_PASSWORD,
@@ -121,18 +122,6 @@ DATABASES = {
         'PORT': POSTGRES_PORT,
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432,
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
