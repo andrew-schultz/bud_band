@@ -35,7 +35,12 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 # DEBUG = True
 
 # ALLOWED_HOSTS = []
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+ENV = os.environ.get("ENV")
+
+if ENV and ENV != 'Dev':
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    # SECURE_PROXY_SSL_HEADER = os.environ.get("SECURE_PROXY_SSL_HEADER").split(" ")
 
 # Application definition
 
@@ -104,6 +109,7 @@ POSTGRES_USER = env('POSTGRES_USER')
 POSTGRES_PASSWORD = env('POSTGRES_PASSWORD')
 POSTGRES_NAME = env('POSTGRES_NAME')
 POSTGRES_HOST = env('POSTGRES_HOST')
+POSTGRES_PORT = env('POSTGRES_PORT')
 
 DATABASES = {
     'default': {
@@ -112,9 +118,20 @@ DATABASES = {
         'USER': POSTGRES_USER,
         'PASSWORD': POSTGRES_PASSWORD,
         'HOST': POSTGRES_HOST,
-        'PORT': 5432,
+        'PORT': POSTGRES_PORT,
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'db',
+#         'PORT': 5432,
+#     }
+# }
 
 
 # Password validation
