@@ -1,26 +1,72 @@
-version: "3.9"
+# version: "3.9"
+   
+# services:
+#   db:
+#     image: postgres
+#     ports:
+#       - '5433:5432'
+#     volumes:
+#       - 'data:/data'
+#     environment:
+#       POSTGRES_USER: 'postgres'
+#       POSTGRES_PASSWORD: 'postgres'
+#       PGDATA: '/data'
+  
+#   django:
+#     build: .
+#     command: python manage.py runserver 0.0.0.0:8000
+#     volumes:
+#       - .:/code
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+
+# volumes:
+#   data:
+
+version: '3.7'
    
 services:
-  db:
-    image: postgres
-    ports:
-      - '5433:5432'
-    volumes:
-      - 'data:/data'
-    environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'postgres'
-      PGDATA: '/data'
-  
-  django:
+  web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn budband.wsgi:application --bind 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
+      - static_volume:/usr/src/code/staticfiles
+      - media_volume:/usr/src/code/mediafiles
+      # - ./:/usr/src/code/
+    # ports:
+      # - 8000:8000
+    expose:
+      - 8000
+    env_file:
+      ./.env.dev
     depends_on:
       - db
 
+  db:
+    image: postgres:12.0-alpine
+    ports:
+      - 5433:5432
+    volumes:
+      - data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/data
+
+  nginx:
+    build: nginx
+    volumes:
+      - static_volume:/usr/src/code/staticfiles
+      - media_volume:/usr/src/code/mediafiles
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
 volumes:
   data:
+  static_volume:
+  media_volume:
