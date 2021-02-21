@@ -1,0 +1,9 @@
+location /staticfiles/ {
+  alias /usr/src/code/staticfiles/;
+  add_header Access-Control-Allow-Origin *;
+}
+
+location /mediafiles/ {
+  alias /usr/src/code/mediafiles/;
+  add_header Access-Control-Allow-Origin *;
+}
