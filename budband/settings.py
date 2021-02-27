@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'webpack_loader',
     'bud_band',
 ]
 
@@ -71,12 +72,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'budband.urls'
 
 cors_rule = os.environ.get('CORS_RULE')
-CORS_ORIGIN_ALLOW_ALL = cors_rule
-
+CORS_ORIGIN_ALLOW_ALL = bool(cors_rule)
+print('BASE DIR BASE DIR BASE DIR', BASE_DIR)
+TEMPLATES_DIR = os.path.join(BASE_DIR, '/bud_band/templates/')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,6 +93,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'budband.wsgi.application'
 
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDERER_CLASSES': (
+#         'rest_framework.renderers.JSONRenderer',
+#     )
+# }
 
 env = environ.Env()
 # reading .env file
@@ -98,6 +105,7 @@ environ.Env.read_env()
 
 SPOTIFY_CLIENT_ID = env('SPOTIFY_CLIENT_ID')
 SPOTIFY_CLIENT_SECRET = env('SPOTIFY_CLIENT_SECRET')
+JWT_SECRET = env('JWT_SECRET')
 
 
 # REQUIRED_CONFIG = required_config = {
@@ -175,3 +183,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'bud_band/static'),
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+WEBPACK_STATS = os.path.join(BASE_DIR, 'frontend/webpack-stats.json')
+print('webpack states', WEBPACK_STATS)
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats.json'),
+    }
+}

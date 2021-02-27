@@ -5,6 +5,7 @@ services:
     build: .
     command: gunicorn budband.wsgi:application --bind 0.0.0.0:8000
     volumes:
+      - .:/usr/src/code
       - static_volume:/usr/src/code/staticfiles
       - media_volume:/usr/src/code/mediafiles
     expose:
@@ -34,6 +35,10 @@ services:
       - 1337:80
     depends_on:
       - web
+
+  # frontend:
+  #   build: .
+  #   command: xe
 
 volumes:
   data:

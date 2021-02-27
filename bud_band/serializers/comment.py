@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from bud_band.models import Comment
+from bud_band.models import Comment, SpotifySongComment
 from .user import UserSerializer
 
-class CommentSerializer(serializers.Modelserializer):
+class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = (
@@ -15,7 +15,7 @@ class CommentSerializer(serializers.Modelserializer):
     user = UserSerializer()
 
 
-class SpotifySongComment(CommentSerializer):
+class SpotifySongCommentSerializer(CommentSerializer):
     class Meta:
         model = SpotifySongComment
         fields = (
@@ -26,4 +26,10 @@ class SpotifySongComment(CommentSerializer):
             'spotify_song_id',
         )
     
+    spotify_song_id = serializers.IntegerField()
+
+
+class SpotifyCommentPostSerializer(serializers.Serializer):
+    text = serializers.CharField()
+    user_id = serializers.IntegerField()
     spotify_song_id = serializers.IntegerField()
