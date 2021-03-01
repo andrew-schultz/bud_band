@@ -3,32 +3,30 @@ import * as React from 'react'
 class CommentForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            comment_text: null,
-        }
     }
 
     render() {
         const {
-            parentId,
-            parentType,
+            newComment
         } = this.props
 
-        if (!this.props.comment) {
+        if (!newComment) {
             return(<div></div>)
         }
 
         return (
-            <div className='form'>
-                hello comment form
-                <input
-                    type='text'
+            <div className='form comment'>
+                <textarea 
                     name='text'
-                    defaultValue=''
+                    defaultValue={newComment.text}
                     onChange={this.props.textChangeHandler}
-                //   value={}
+                    rows="4" 
+                    cols="50"
                 />
-                <div className='submit' onClick={this.props.onSubmit}>Submit</div>
+                <div className='submit-block'>
+                    <div className='submit-gap'></div>
+                    <div className='submit-button' onClick={this.props.onSubmit}>Submit</div>
+                </div>
             </div>
         )
     }

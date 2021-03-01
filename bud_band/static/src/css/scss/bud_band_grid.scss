@@ -1,0 +1,38 @@
+.column {
+    display: inline-block;
+    min-height: 5px;
+
+    &.empty {
+        height: 100px;
+    }
+
+    &.twelve {
+        width: 100%;
+    }
+
+    &.eight {
+        width: 66.6%;
+        border-radius: 18%;
+    }
+
+    &.six {
+        width: 50%;
+    }
+
+    &.four {
+        width: 33.3%;        
+    }
+
+    &.two {
+        width: 15.1%;
+    }
+
+    &.content-block {
+        border: 1px solid #F4EDDC;
+        border-radius: 18%;
+    }
+}
+
+.shadow {
+    box-shadow: -10px -10px 10px 0 rgba(255, 255, 255, 0.75), 10PX 10px 10px 0 rgba(0, 0, 0, 0.19);
+}

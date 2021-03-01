@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom'
 import * as utils from '../../utils.jsx'
 import api from '../../api'
 import CommentsBlock from '../../Comments/CommentsBlock'
+import SongForm from './SongForm'
+import SongDetail from './SongDetail'
 
 
 class SongView extends React.Component {
@@ -11,7 +13,11 @@ class SongView extends React.Component {
         this.state = {
             id: this.props.song.id ? this.props.song.id : null,
             song: this.props.song ? this.props.song : {},
+            comments: [],
             modalOpen: false,
+            newSong: {
+                uri: ''
+            },
             newComment: {
                 song_id: this.props.song.id,
                 text: ''
@@ -27,6 +33,8 @@ class SongView extends React.Component {
             'HTTP-X-CSRFToken': this.csrftoken,
             'X-CSRFToken': this.csrftoken
         }
+
+        this.setState({comments: this.props.comments})
     }
 
     handleCommentChange = (event) => {
@@ -38,12 +46,13 @@ class SongView extends React.Component {
     }
 
     handleCommentSubmit = async () => {
-        const {comment} = this.state
+        const {newComment, song, user} = this.state
         var request_data = {
-            // do we need to break down the fiels?
-            text: comment.text
+            text: newComment.text,
+            spotify_song_id: song.id,
+            // user_id: user.is
         }
-        const { ata} = await api.comments.create(request_data, this.headers)
+        const {data} = await api.comments.create(request_data, this.headers)
         // if success: reload
         // if error: show error
     }
@@ -68,23 +77,29 @@ class SongView extends React.Component {
 
     render() {
         const {
+            newComment,
             song,
             comments
-        } = this.props
-
-        const {
-            newComment
         } = this.state
-        console.log('hello newComment')
-        debugger
+
         return (
-            <CommentsBlock 
-                comments={comments}
-                newComment={newComment}
-                parent={song}
-                textChangehandler={this.handleCommentChange}
-                handleCommentSubmit={this.handleCommentSubmit}
-            />
+            <div>
+                {song ? 
+                    <SongDetail song={song}/> : 
+                    <SongForm 
+                        newSong={newSong}
+                        uriChangeHandler={this.handleSongChange}
+                        handleSongSubmit={this.handleSongSubmit}
+                    />
+                }
+                <CommentsBlock 
+                    comments={comments}
+                    newComment={newComment}
+                    parent={song}
+                    textChangehandler={this.handleCommentChange}
+                    handleCommentSubmit={this.handleCommentSubmit}
+                />
+            </div>
         )
     }
 }

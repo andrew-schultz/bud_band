@@ -1,0 +1,45 @@
+#SpotifySong {
+    background-color: #F4EDDC;
+}
+
+.attribute-div {
+    width: 100%;
+    
+    p {
+        display: inline-block;
+    }
+
+    &.center {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &.title {
+        margin: 0 auto;
+        font-size: 2.5em;
+        text-align: center;
+        width: 90%;
+        padding: 20px;
+
+        p {
+            margin: 0px;
+        }
+    }
+
+    &.image {
+        img {
+            border-radius: 18%;
+            display: block;
+            margin: 0 auto;
+            max-width: 75%;
+        }
+    }
+
+    &.reported-by {
+        text-align: center;
+    }
+
+    &.link {
+
+    }
+}

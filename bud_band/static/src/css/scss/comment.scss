@@ -1,0 +1,61 @@
+.comments-block {
+    margin: 0 auto;
+    max-width: 400px;
+
+    .comment {
+        padding-bottom: 10px;
+
+        &.form {
+            width: 400px;
+        }
+
+        .byline {
+
+            p {
+                display: inline-block;
+
+                &.author {
+                    font-size: .9em;
+                    padding-right: 10px;
+                    margin: 0px;
+                }
+
+                &.timestamp {
+                    padding-left: 10px;
+                    color: #777;
+                    font-size: .75em;
+                    margin: 0px;
+                }
+            }
+        }
+
+        .text {
+            p {
+                padding: 0px;
+                margin: 0px;
+            }
+
+        }
+
+        .submit-block {
+            width: 100%;
+
+            .submit-gap {
+                width: 250px;
+                display: inline-block;
+            }
+
+            .submit-button {
+
+                display: inline-block;
+                width: 100px;
+                padding: 5px;
+                border: 3px #000 solid;
+                font-weight: 800;
+                text-align: center;
+                cursor: pointer; 
+            } 
+        }
+    }
+
+}
