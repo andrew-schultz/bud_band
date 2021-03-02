@@ -1,13 +1,16 @@
 .comments-block {
     margin: 0 auto;
-    max-width: 400px;
+    color: #5d5d5d;
+    // max-width: 400px;
 
     .comment {
-        padding-bottom: 10px;
-
-        &.form {
-            width: 400px;
-        }
+        padding: 15px 20px 15px 20px;
+        width: 100%;
+        margin-bottom: 20px;
+        left: -21px;
+        // &.form {
+        //     // width: 400px;
+        // }
 
         .byline {
 
@@ -37,25 +40,39 @@
 
         }
 
-        .submit-block {
+        .comment-input {
+            resize: none;
+            // background-color: #F4EDDC;
+            // background-color: rgba(244, 237, 220, 1);
+            background-color: rgba(0, 0, 0, 0.10);
+            border: 1px solid #F4EDDC;
+            border-radius: 25px;
+            padding: 15px 20px 15px 20px;
+            left: -21px;
+            position: relative;
             width: 100%;
-
-            .submit-gap {
-                width: 250px;
-                display: inline-block;
-            }
-
-            .submit-button {
-
-                display: inline-block;
-                width: 100px;
-                padding: 5px;
-                border: 3px #000 solid;
-                font-weight: 800;
-                text-align: center;
-                cursor: pointer; 
-            } 
+            outline: none;
+            color: #5d5d5d;
+            box-shadow: -8px -8px 10px 0 rgba(255, 255, 255, 0.3) inset, 8px 8px 10px 0 rgba(0, 0, 0, 0.19) inset !important;
         }
+
+        // .submit-block {
+        //     width: 100%;
+
+        //     .submit-gap {
+        //         display: inline-block;
+        //     }
+
+        .submit-button {
+            width: 100%;
+            padding: 5px;
+            // border: 3px #000 solid;
+            font-weight: 800;
+            text-align: center;
+            cursor: pointer; 
+            margin-top: 5px;
+        }
+        // }
     }
 
 }

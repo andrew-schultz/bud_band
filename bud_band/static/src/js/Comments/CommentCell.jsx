@@ -23,7 +23,7 @@ class CommentCell extends React.Component {
         console.log(comment_date)
 
         return (
-            <div className='comment'>
+            <div className='column comment highlight-background shadow round-corners'>
                 <div className='byline'>
                     <p className='author'>{comment.user.username}</p>
                     <p className='timestamp'>{comment_date ? comment_date : ''}</p>

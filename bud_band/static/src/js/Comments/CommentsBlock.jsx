@@ -21,13 +21,38 @@ class CommentsBlock extends React.Component {
 
         return (
             <div className="comments-block">
-                <CommentForm
-                    type={parent.type}
-                    newComment={newComment}
-                    textChangeHandler={this.props.textChangeHandler}
-                    onSubmit={this.props.handleCommentSubmit}
-                />
-                <ConditionalComments comments={comments} />
+                <div className='row'>
+                    <div className='column twelve'></div>
+                </div>
+
+                <div className='row'>
+                    <div className='column three'></div>
+                    <div className='column six'>
+                        <CommentForm
+                            type={parent.type}
+                            newComment={newComment}
+                            textChangeHandler={this.props.textChangeHandler}
+                            onSubmit={this.props.handleCommentSubmit}
+                        />
+                    </div>
+                    <div className='column three'></div>
+                </div>
+
+                <div className='row'>
+                    <div className='column twelve'></div>
+                </div>
+                
+                <div className='row'>
+                    <div className='column four'></div>
+                    <div className='column four'>
+                        <ConditionalComments comments={comments} />
+                    </div>
+                    <div className='column four'></div>
+                </div>
+                
+                <div className='row'>
+                    <div className='column twelve empty'></div>
+                </div>
             </div>
         )
     }

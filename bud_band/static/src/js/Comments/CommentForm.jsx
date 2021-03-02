@@ -17,15 +17,18 @@ class CommentForm extends React.Component {
         return (
             <div className='form comment'>
                 <textarea 
+                    className='comment-input'
                     name='text'
+                    placeholder="Whatcha think?"
                     defaultValue={newComment.text}
                     onChange={this.props.textChangeHandler}
                     rows="4" 
                     cols="50"
                 />
-                <div className='submit-block'>
-                    <div className='submit-gap'></div>
-                    <div className='submit-button' onClick={this.props.onSubmit}>Submit</div>
+
+                <div className='column nine'></div>
+                <div className='column three'>
+                    <div className='submit-button column content-block shadow clickable rectangle-bubble' onClick={this.props.onSubmit}>Submit</div>
                 </div>
             </div>
         )
