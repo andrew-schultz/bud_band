@@ -23,13 +23,17 @@ class CommentCell extends React.Component {
         console.log(comment_date)
 
         return (
-            <div className='column comment highlight-background shadow round-corners'>
-                <div className='byline'>
-                    <p className='author'>{comment.user.username}</p>
-                    <p className='timestamp'>{comment_date ? comment_date : ''}</p>
-                </div>
-                <div className='text'>
-                    <p>{comment.text}</p>
+            <div className='comment-container'>
+                <div className='column comment highlight-background inverse-shadow round-corners'>
+                    <div className='comment-inner'>
+                        <div className='byline'>
+                            <p className='author'>{comment.user.username}</p>
+                            <p className='timestamp'>{comment_date ? comment_date : ''}</p>
+                        </div>
+                        <div className='text'>
+                            <p>{comment.text}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

@@ -7,7 +7,7 @@ const ConditionalComments = ({comments=[]}) =>{
         return <div>{comments.map((comment, i) => (<CommentCell key={i} comment={comment} />))}</div>
     }
 
-    return <div>buttz</div>
+    return <div></div>
 }
 
 
@@ -21,9 +21,7 @@ class CommentsBlock extends React.Component {
 
         return (
             <div className="comments-block">
-                <div className='row'>
-                    <div className='column twelve'></div>
-                </div>
+                <div className='column twelve'></div>
 
                 <div className='row'>
                     <div className='column three'></div>
@@ -43,11 +41,11 @@ class CommentsBlock extends React.Component {
                 </div>
                 
                 <div className='row'>
-                    <div className='column four'></div>
-                    <div className='column four'>
+                    <div className='column three'></div>
+                    <div className='column six'>
                         <ConditionalComments comments={comments} />
                     </div>
-                    <div className='column four'></div>
+                    <div className='column three'></div>
                 </div>
                 
                 <div className='row'>

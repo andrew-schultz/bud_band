@@ -1,87 +1,179 @@
+@import './mixins.scss';
+
 .row {
-    width: 100%
+    width: 100%;
+    min-height: 0px;
+}
+
+.content-main {
+    width: 90%;
+    margin: 0 auto;
+    display: block !important;
 }
 
 .column {
+    margin: 0 auto;
     display: inline-block;
-    min-height: 5px;
-
-    &.empty {
-        height: 100px;
-    }
+    min-height: 1px;
 
     &.twelve {
         width: 100%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+        }
     }
 
     &.ten {
-        width: 83.3%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 83.3%;
+        }
+        @media all and (min-width: $medium) {
+            width: 83.3%;
+        }
     }
 
     &.nine {
-        width: 75%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 75%;
+        }
+        @media all and (min-width: $medium) {
+            width: 75%;
+        }
     }
 
     &.eight {
-        width: 66.6%;
-        border-radius: 18%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 66.6%;
+        }
+        @media all and (min-width: $medium) {
+            width: 66.6%;
+        }
     }
 
     &.six {
-        width: 50%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 50%;
+        }
+        @media all and (min-width: $medium) {
+            width: 50%;
+        }
     }
 
     &.five {
-        width: 41.5%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 41.5%;
+        }
+        @media all and (min-width: $medium) {
+            width: 41.5%;
+        }
     }
 
     &.four {
-        width: 33.3%;        
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 33.3%;
+        }
+        @media all and (min-width: $medium) {
+            width: 33.3%;
+        }
     }
 
     &.three {
-        width: 25%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 25%;
+        }
+        @media all and (min-width: $medium) {
+            width: 25%;
+        }
     }
 
     &.two {
-        width: 15.1%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 15.1%;
+        }
+        @media all and (min-width: $medium) {
+            width: 15.1%;
+        }
     }
 
     &.one {
-        width: 8.3%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 8.3%;
+        }
+        @media all and (min-width: $medium) {
+            width: 8.3%;
+        }
     }
 
     &.content-block {
-        // border: 1px solid #F4EDDC;
-        border: 1px solid rgba(244, 237, 220, 0.2);
+        border: 1px solid #F4EDDC;
+        // border: 1px solid rgba(244, 237, 220, 0.2);
         // border: 1px solid white;
-        border-radius: 18%;
-        background-color: rgba(0, 0, 0, 0.09);
+        border-radius: 20px;
+        // background-color: rgba(0, 0, 0, 0.01);
     }
 
     &.rectangle-bubble {
-        max-height: 50px;
-        border-radius: 25px ;
+        border-radius: 20px ;
     }
 
     &.round-corners {
-        border: 1px solid rgba(244, 237, 220, 0.2);
-        border-radius: 25px;
+        border: 1px solid #F4EDDC;
+        // border: 1px solid rgba(244, 237, 220, 0.2);
+        border-radius: 20px;
     }
 
     &.highlight-background {
-        border: 1px solid rgba(244, 237, 220, 0.2);
-        background-color: rgba(0, 0, 0, 0.09);
+        border: 1px solid #F4EDDC;
+        // border: 1px solid rgba(244, 237, 220, 0.2);
+        background-color: rgba(0, 0, 0, 0.01);
     }
 }
 
 .shadow {
-    box-shadow: 0.3rem 0.3rem 0.6rem 0 #a9a49bd1, -0.2rem -0.2rem 0.5rem 0 #FFFFFF;
+    box-shadow: 4px 4px 6px 0 #a9a49bd1, -4px -4px 6px 0 #FFFFFF;
     // box-shadow: -5px -5px 15px 0 rgba(255, 255, 255, 0.8), 5px 5px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 .inverse-shadow {
-    box-shadow: -8px -8px 15px 0 rgba(255, 255, 255, 0.8), -8px -8px 15px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: -3px -3px 5px 0 rgba(255, 255, 255, 0.7) inset, 3px 3px 5px 0 rgba(0, 0, 0, 0.19) inset !important;
+    // box-shadow: -0.3rem -0.3rem 0.6rem 0 #a9a49bd1 inset, 0.2rem 0.2rem 0.5rem 0 #FFFFFF inset;
+    // box-shadow: -8px -8px 15px 0 rgba(255, 255, 255, 0.8) inset, -8px -8px 15px 0 rgba(0, 0, 0, 0.19) inset;
 }
 
 .clickable  {
@@ -89,9 +181,8 @@
 }
 
 .clickable:active {
-    color: #FFFFFF;
-    background-color: rgba(0, 0, 0, 0.10);
+    background-color: rgba(0, 0, 0, 0.01);
     border: 1px solid #F4EDDC;
     // box-shadow: 0.3rem 0.3rem 0.6rem 0 #FFFFFF inset, 0.2rem 0.2rem 0.5rem 0 #a9a49bd1 inset !important;
-    box-shadow: -5px -5px 10px 0 rgba(255, 255, 255, 0.8) inset, 8px 8px 10px 0 rgba(0, 0, 0, 0.19) inset !important;
+    box-shadow: -3px -3px 5px 0 rgba(255, 255, 255, 0.8) inset, 3px 3px 5px 0 rgba(0, 0, 0, 0.19) inset !important;
 }

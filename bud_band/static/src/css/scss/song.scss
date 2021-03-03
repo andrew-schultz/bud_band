@@ -1,9 +1,12 @@
+@import './mixins.scss';
+
 #SpotifySong {
     background-color: #F4EDDC;
 }
 
 .attribute-div {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     color: #5d5d5d;
     
     p {
@@ -21,12 +24,21 @@
         text-align: center;
         width: 70%;
         font-weight: bold;
-        // padding: 20px;
         padding: 50px 20px 35px 20px;
 
         p {
             margin: 0px;
         }
+
+        @media all and (max-width: $medium) {
+            font-size: 2em;
+        }
+        // @media all and (min-width: $small) and (max-width: $medium) {
+        //     width: 83.3%;
+        // }
+        // @media all and (min-width: $medium) {
+        //     width: 83.3%;
+        // }
     }
 
     &.image {
@@ -60,5 +72,6 @@
     &.link {
         text-align: center;
         font-weight: bolder;
+
     }
 }
