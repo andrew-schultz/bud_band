@@ -18,7 +18,7 @@ class SongForm extends React.Component {
                 <div className='column six'>
                     <div className='song-form-title'>
                         <p className='top'>Listen to anything good lately?</p>
-                        <p className='bottom'>Enter a Spotify Song URI</p>
+                        <p className='bottom'>Enter a Spotify Song Link</p>
                     </div>
                 </div>
                 <div className='column three'></div>

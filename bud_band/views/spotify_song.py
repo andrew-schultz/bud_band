@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.renderers import TemplateHTMLRenderer
 from bud_band.auth import JWTAuthentication
 from bud_band.models import SpotifySong
+from bud_band.models.spotify_song import build_uri_from_link
 from bud_band.serializers.spotify_song import (
     SpotifySongSerializer, SpotifySongExtendedSerializer, SpotifyPostSerializer)
 from bud_band.services.spotify import get_track
@@ -35,6 +36,7 @@ class SpotifySongCreateView(APIView):
         serializer = SpotifyPostSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         uri = serializer.validated_data.get('uri')
+        uri = build_uri_from_link(uri)
         try:
             track_info = get_track(uri)
         except SpotifyException as e:
