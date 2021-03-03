@@ -72,9 +72,14 @@ class SongView extends React.Component {
         }
         const {data} = await api.spotifySong.create(request_data, this.headers)
 
+        if (data && data.id) {
+            const url = new URL(window.location)
+            var newUrl = `${url.origin}/api/v1/spotify_song/${data.id}/edit/`
+            window.history.pushState({}, '', newUrl)
 
-        // update the url without reloading the page all the way?
-        // window.history.pushState({"html":response.html,"pageTitle":response.pageTitle},"", urlPath);
+            newSong.uri = ''
+            this.setState({song: data, newSong: newSong})
+        }
     }
 
     render() {

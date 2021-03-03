@@ -25,13 +25,13 @@ class SongDetail extends React.Component {
                         <div className='column ten'>
                             <div className='column content-block shadow content-main'>
                                 <div className='attribute-div title'>
-                                    <p className='value'>{song.title} by {song.artist}</p>
+                                    <p className='value'>{song.title}<br /><span className='by'>by</span><br />{song.artist}</p>
                                 </div>
                                 <div className='attribute-div image '>
                                     <img src={song.artwork} />
                                 </div>
                                 <div className='attribute-div center album'>
-                                    <p className='label'>From the Album </p> <p className='value'>{song.album}</p>
+                                    <p> <span className='label'>From the Album</span> {song.album}</p>
                                 </div>
                                 <div className='attribute-div reported-by' >
                                     <p className='label'>Reported by:</p> <p className='value'>{song.owner.username}</p>
