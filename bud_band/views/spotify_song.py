@@ -1,6 +1,8 @@
+from spotipy.client import SpotifyException
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication
+from rest_framework.authentication import SessionAuthentication
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -8,11 +10,12 @@ from bud_band.auth import JWTAuthentication
 from bud_band.models import SpotifySong
 from bud_band.serializers.spotify_song import (
     SpotifySongSerializer, SpotifySongExtendedSerializer, SpotifyPostSerializer)
+from bud_band.services.spotify import get_track
 
 
 class SpotifySongAPIView(APIView):
     permission_classes = (IsAuthenticated, IsAdminUser,)
-    authentication_classes = (JWTAuthentication,)
+    authentication_classes = (SessionAuthentication, JWTAuthentication,)
 
     def get(self, request, id):
         try:
@@ -26,11 +29,12 @@ class SpotifySongAPIView(APIView):
 
 class SpotifySongCreateView(APIView):
     permission_classes = (IsAuthenticated, IsAdminUser,)
-    authentication_classes = (JWTAuthentication,)
+    authentication_classes = (SessionAuthentication, JWTAuthentication,)
 
     def post(self, request):
         serializer = SpotifyPostSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        uri = serializer.validated_data.get('uri')
         try:
             track_info = get_track(uri)
         except SpotifyException as e:
@@ -56,22 +60,20 @@ class SpotifySongCreateView(APIView):
 
 class SpotifySongAddView(APIView):
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'spotify_song.html'
-    permission_classes = (IsAuthenticated, IsAdminUser,)
-    authentication_classes = (JWTAuthentication,)
-    # serializer_class = TrainingSerializer
+    template_name = 'admin/spotify_song/spotify_song.html'
+    # permission_classes = (IsAuthenticated, IsAdminUser,)
+    authentication_classes = (SessionAuthentication, JWTAuthentication,)
 
     def get(self, request):
-        return Response({
-
-        })
+        payload = {'song_data': {}, 'comments': []}
+        return Response(payload)
 
 
 class SpotifySongEditView(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'admin/spotify_song/spotify_song.html'
     # permission_classes = (IsAuthenticated, IsAdminUser,)
-    # authentication_classes = (JWTAuthentication,)
+    authentication_classes = (SessionAuthentication, JWTAuthentication,)
     serializer_class = SpotifySongExtendedSerializer
 
     def get(self, request, id):

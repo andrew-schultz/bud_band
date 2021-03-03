@@ -21,8 +21,8 @@ class CommentForm extends React.Component {
                         className='comment-input'
                         name='text'
                         placeholder="Whatcha think?"
-                        defaultValue={newComment.text}
-                        onChange={this.props.textChangeHandler}
+                        onChange={this.props.handleCommentChange}
+                        value={newComment.text}
                         rows="4" 
                         cols="3"
                     />

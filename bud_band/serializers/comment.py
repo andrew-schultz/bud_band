@@ -31,5 +31,4 @@ class SpotifySongCommentSerializer(CommentSerializer):
 
 class SpotifyCommentPostSerializer(serializers.Serializer):
     text = serializers.CharField()
-    user_id = serializers.IntegerField()
     spotify_song_id = serializers.IntegerField()

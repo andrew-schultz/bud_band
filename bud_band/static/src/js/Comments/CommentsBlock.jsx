@@ -29,7 +29,7 @@ class CommentsBlock extends React.Component {
                         <CommentForm
                             type={parent.type}
                             newComment={newComment}
-                            textChangeHandler={this.props.textChangeHandler}
+                            handleCommentChange={this.props.handleCommentChange}
                             onSubmit={this.props.handleCommentSubmit}
                         />
                     </div>

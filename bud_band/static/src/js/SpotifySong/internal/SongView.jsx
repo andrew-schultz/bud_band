@@ -39,34 +39,36 @@ class SongView extends React.Component {
 
     handleCommentChange = (event) => {
         var comment = this.state.newComment
-        // var field = event.target.name
-        console.log(`field name from target ${event.target.name}`)
         comment[event.target.name] = event.target.value
         this.setState({newComment: comment})
     }
 
     handleCommentSubmit = async () => {
-        const {newComment, song, user} = this.state
+        const {newComment, song, comments} = this.state
         var request_data = {
             text: newComment.text,
             spotify_song_id: song.id,
-            // user_id: user.is
         }
-        const {data} = await api.comments.create(request_data, this.headers)
+        const {data} = await api.comment.create(request_data, this.headers)
+
+        comments.push(data)
+        newComment.text = ''
+
+        this.setState({comments: comments, newComment: newComment})
         // if success: reload
         // if error: show error
     }
 
     handleSongChange = (event) => {
-        var {song} = this.state;
-        song[event.target.name] = event.target.value
-        this.setState({song: song})
+        var {newSong} = this.state;
+        newSong[event.target.name] = event.target.value
+        this.setState({newSong: newSong})
     }
 
     handleSongSubmit = async () => {
-        const {song} = this.state
+        const {newSong} = this.state
         var request_data = {
-            uri: song.uri
+            uri: newSong.uri
         }
         const {data} = await api.spotifySong.create(request_data, this.headers)
 
@@ -78,27 +80,30 @@ class SongView extends React.Component {
     render() {
         const {
             newComment,
+            newSong,
             song,
             comments
         } = this.state
 
         return (
             <div>
-                {song ? 
+                {(song && song.id) ? 
                     <SongDetail song={song}/> : 
                     <SongForm 
                         newSong={newSong}
-                        uriChangeHandler={this.handleSongChange}
-                        handleSongSubmit={this.handleSongSubmit}
+                        handleSongChange={this.handleSongChange}
+                        onSubmit={this.handleSongSubmit}
                     />
                 }
-                <CommentsBlock 
-                    comments={comments}
-                    newComment={newComment}
-                    parent={song}
-                    textChangehandler={this.handleCommentChange}
-                    handleCommentSubmit={this.handleCommentSubmit}
-                />
+                {(song && song.id) ? 
+                    <CommentsBlock 
+                        comments={comments}
+                        newComment={newComment}
+                        parent={song}
+                        handleCommentChange={this.handleCommentChange}
+                        handleCommentSubmit={this.handleCommentSubmit}
+                    /> : ''
+                }
             </div>
         )
     }

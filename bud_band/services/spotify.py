@@ -1,4 +1,5 @@
 import spotipy
+from spotipy.client import SpotifyException
 from spotipy.oauth2 import SpotifyClientCredentials
 from django.conf import settings
 
