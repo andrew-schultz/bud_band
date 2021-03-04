@@ -3,9 +3,11 @@ require('../css/scss/main.scss')
 import React from 'react'
 import { render } from 'react-dom'
 import SpotifySong from './SpotifySong'
+import SpotifySongList from './SpotifySongList'
 
 const page_apps = {
   SpotifySong,
+  SpotifySongList,
 };
 
 function renderAppInElement(el) {

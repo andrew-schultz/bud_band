@@ -5,6 +5,7 @@ import api from '../../api'
 import CommentsBlock from '../../Comments/CommentsBlock'
 import SongForm from './SongForm'
 import SongDetail from './SongDetail'
+import SSHeader from '../../Header.jsx'
 
 
 class SongView extends React.Component {
@@ -92,6 +93,8 @@ class SongView extends React.Component {
 
         return (
             <div>
+                <SSHeader></SSHeader>
+                <div className='column twelve top-gap'></div>
                 {(song && song.id) ? 
                     <SongDetail song={song}/> : 
                     <SongForm 

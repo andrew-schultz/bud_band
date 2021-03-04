@@ -21,6 +21,10 @@
         @media all and (max-width: $small) {
             min-height: 0px;
         }
+
+        &.top-gap {
+            height: 80px;
+        }
     }
 
     &.ten {

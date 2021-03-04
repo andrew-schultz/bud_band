@@ -17,31 +17,26 @@ class SongDetail extends React.Component {
 
         return (
             <div className='detail'>
-                <div className='container'>
-                    <div className='column twelve empty'></div>
-                    
-                    <div className='row'>
-                        <div className='column one'></div>
-                        <div className='column ten'>
-                            <div className='column content-block shadow content-main'>
-                                <div className='attribute-div title'>
-                                    <p className='value'>{song.title}<br /><span className='by'>by</span><br />{song.artist}</p>
-                                </div>
-                                <div className='attribute-div image '>
-                                    <img src={song.artwork} />
-                                </div>
-                                <div className='attribute-div center album'>
-                                    <p> <span className='label'>From the Album</span> {song.album}</p>
-                                </div>
-                                <div className='attribute-div reported-by' >
-                                    <p className='label'>Reported by:</p> <p className='value'>{song.owner.username}</p>
-                                </div>
+                <div className='container'>                    
+                    <div className='column one'></div>
+                    <div className='column ten'>
+                        <div className='column content-block shadow content-main'>
+                            <div className='attribute-div image '>
+                                <img src={song.artwork} />
+                            </div>
+                            <div className='attribute-div title'>
+                                <p className='value'>{song.title} </p>
+                                <p className='value-artist'>{song.artist}</p>
+                            </div>
+                            <div className='attribute-div album'>
+                                <p> <span className='label'>From the Album</span> {song.album}</p>
+                            </div>
+                            <div className='attribute-div reported-by' >
+                                <p className='label'>Reported by:</p> <p className='value'>{song.owner.username}</p>
                             </div>
                         </div>
-                        <div className='column one'></div>
                     </div>
-
-                    <div className='column twelve'></div>
+                    <div className='column one'></div>
                     
                     <div className='row'>
                         <div className='column five'></div>

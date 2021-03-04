@@ -20,4 +20,5 @@ spotify_song_urlpatterns = [
     path('<int:id>/edit/', spotify_song.SpotifySongEditView.as_view(), name='spotify-song-edit'),
     path('create/', spotify_song.SpotifySongAddView.as_view(), name='spotify-song-add'),
     path('', spotify_song.SpotifySongCreateView.as_view(), name='spotify-song-create'),
+    path('list/', spotify_song.SpotifySongListView.as_view(), name='spotify-song-list'),
 ]

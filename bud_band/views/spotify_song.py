@@ -1,5 +1,6 @@
 from spotipy.client import SpotifyException
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import authentication
 from rest_framework.authentication import SessionAuthentication
@@ -87,4 +88,26 @@ class SpotifySongEditView(APIView):
         serializer = SpotifySongExtendedSerializer(song)
         song_data = serializer.data
         payload = {'song_data': song_data, 'comments': song_data['comments']}
+        return Response(payload)
+
+
+class SpotifySongListView(ListAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'admin/spotify_song/spotify_song_list.html'
+    authentication_classes = (SessionAuthentication, JWTAuthentication,)
+
+    def get(self, request):
+        queryset = SpotifySong.objects.select_related('owner')
+        paginated_queryset = self.paginate_queryset(queryset)
+
+        songs = self.get_paginated_response(paginated_queryset)
+        songs = dict(songs.data)
+        songs_data = SpotifySongSerializer(songs['results'], many=True).data
+
+        payload = {
+            'songs_data': songs_data,
+            'next_query': songs['next'],
+            'previous_query': songs['previous'],
+            'count': songs['count']
+        }
         return Response(payload)
