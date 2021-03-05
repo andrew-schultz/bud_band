@@ -7,12 +7,13 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.renderers import TemplateHTMLRenderer
+from django.conf import settings
 from bud_band.auth import JWTAuthentication
 from bud_band.models import SpotifySong
 from bud_band.models.spotify_song import build_uri_from_link
 from bud_band.serializers.spotify_song import (
     SpotifySongSerializer, SpotifySongExtendedSerializer, SpotifyPostSerializer)
-from bud_band.services.spotify import get_track
+from bud_band.services.spotify import get_track, add_track_to_playlist
 
 
 class SpotifySongAPIView(APIView):
@@ -57,6 +58,8 @@ class SpotifySongCreateView(APIView):
                 song.artwork = i['url']
 
         song.save()
+        add_track_to_playlist(song.uri, settings.BUDBAND_PLAYLIST_ID)
+
         serializer = SpotifySongExtendedSerializer(song)
         return Response(serializer.data)
 
@@ -94,6 +97,27 @@ class SpotifySongEditView(APIView):
 class SpotifySongListView(ListAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'admin/spotify_song/spotify_song_list.html'
+    authentication_classes = (SessionAuthentication, JWTAuthentication,)
+
+    def get(self, request):
+        queryset = SpotifySong.objects.select_related('owner')
+        paginated_queryset = self.paginate_queryset(queryset)
+
+        songs = self.get_paginated_response(paginated_queryset)
+        songs = dict(songs.data)
+        songs_data = SpotifySongSerializer(songs['results'], many=True).data
+
+        payload = {
+            'songs_data': songs_data,
+            'next_query': songs['next'],
+            'previous_query': songs['previous'],
+            'count': songs['count']
+        }
+        return Response(payload)
+
+
+class SpotifySongListAPIView(ListAPIView):
+    permission_classes = (IsAuthenticated, IsAdminUser,)
     authentication_classes = (SessionAuthentication, JWTAuthentication,)
 
     def get(self, request):

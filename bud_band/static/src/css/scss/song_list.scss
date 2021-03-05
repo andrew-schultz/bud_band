@@ -2,10 +2,22 @@
 
 .song-cell-container {
     width: 100%;
+    height: auto;
+
     .song-cell {
         width: 90%;
         margin: 0 auto;
         display: block;
+        color: #5d5d5d;
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                height: 68em;
+        }
 
         .song-inner {
            
@@ -13,72 +25,144 @@
                 display: inline-block;
                 padding: 20px;
 
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        width: 90%;
+                        padding: 5%;
+                }
+
                 img {
                     text-align: center;
                     margin: 0 auto;
                     border-radius: 20px;
-
-                    @media all and (max-width: 400px) {
+                    
+                    @media all and (max-width: $small) {
                         width: 100%;
                         height: auto;
                     }
-                    @media all and (min-width: 400px) {
+                    @media all and (min-width: $small) {
                         height: 100px;
                         width: 100px;   
+                    }
+                    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                        only screen and (   min--moz-device-pixel-ratio: 3),
+                        only screen and (     -o-min-device-pixel-ratio: 3/1),
+                        only screen and (        min-device-pixel-ratio: 3),
+                        only screen and (                min-resolution: 460dpi),
+                        only screen and (                min-resolution: 3dppx) {
+                            width: 100%;
+                            height: auto;
                     }
                 }
             }
 
-            .song-inner-text {
-                // padding-left: 20px;
-                vertical-align: top;
+            .song-inner-text-wrapper {
                 display: inline-block;
+                vertical-align: top;
+                // width: 100%;
 
-                @media all and (max-width: 400px) {
-                    width: 90%;
-                    padding: 0 5%;
-
-                    .song-inner-title {
-                        font-size: 1.5em;
-                        font-weight: bold;
-                        margin-top: 0px;
-                        margin-bottom: 0px;
-                    }
-    
-                    .song-inner-artist {
-                        font-size: 1em;
-                        margin-top: 0px;
-                        margin-bottom: 0px;
-                    }
-
-                    .song-inner-reporter {
-                        font-size: 0.75em;
-                    }
+                @media all and (max-width: $small) {
+                    width: 100%;
                 }
-                
-                @media all and (min-width: 400px) {
-                    margin-top: 0px;
-                    padding-top: 20px;
-                
-                    .song-inner-title {
-                        font-size: 1.5em;
-                        font-weight: bold;
-                        margin-top: 0px;
-                        margin-bottom: 0px;
-                    }
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        width: 100%;
+                }
+
+                .song-inner-text {
+                    vertical-align: top;
+                    display: inline-block;
+
+                    @media all and (max-width: $small) {
+                        width: 90%;
+                        padding: 0 5%;
     
-                    .song-inner-artist {
-                        font-size: 1em;
+                        .song-inner-title {
+                            font-size: 1.5em;
+                            font-weight: bold;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                        }
+        
+                        .song-inner-artist {
+                            font-size: 1em;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                        }
+    
+                        .song-inner-reporter {
+                            font-size: 0.75em;
+                        }
+                    }
+                    
+                    @media all and (min-width: $small) {
                         margin-top: 0px;
+                        padding-top: 21px;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100px;
+                        
+                        .song-inner-title {
+                            font-size: 1.5em;
+                            font-weight: bold;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                            flex-grow: 1;
+                        }
+        
+                        .song-inner-artist {
+                            font-size: 1em;
+                            margin-top: 0px;
+                            flex-grow: 1;
+                        }                  
+
+                        .song-inner-reporter {
+                            font-size: 0.75em;
+                            vertical-align: bottom;
+                            flex-grow: 3;
+                            margin-bottom: 0px;
+                        }
                     }
 
-                    .song-inner-reporter {
-                        height: auto;
-                        font-size: 0.75em;
-                        margin-top: 44px;
-                        margin-bottom: 20px;
+                    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                        only screen and (   min--moz-device-pixel-ratio: 3),
+                        only screen and (     -o-min-device-pixel-ratio: 3/1),
+                        only screen and (        min-device-pixel-ratio: 3),
+                        only screen and (                min-resolution: 460dpi),
+                        only screen and (                min-resolution: 3dppx) {
+                            width: 90%;
+                            padding: 0 5%;
+        
+                            .song-inner-title {
+                                font-size: 3.75em;
+                                font-weight: bold;
+                                margin-top: 0px;
+                                margin-bottom: 0px;
+                            }
+            
+                            .song-inner-artist {
+                                font-size: 2.5em;
+                                margin-top: 0px;
+                                margin-bottom: 0px;
+                            }
+        
+                            .song-inner-reporter {
+                                font-size: 1.75em;
+                            }
+
+                            .ios-gap {
+                                height: 20px;
+                            }
                     }
-                }
+                } 
             }
         }
     }

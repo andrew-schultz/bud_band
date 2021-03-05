@@ -2,3 +2,14 @@ __pycache__
 __pycache__*
 .env
 .env*
+.env.dev
+.env.dev.db
+.env.prod
+.env.prod.db
+.env.prod.proxy-companion
+.env.dev.proxy-companion
+node_modules*
+frontend/node_modules*
+frontend/node_modules/*
+*.DS_Store*
+.DS_Store

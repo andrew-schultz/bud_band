@@ -16,17 +16,54 @@
 
     &.title {
         padding: 0 5%;
-        font-size: 2.5em;
-        // text-align: center;
         width: 90%;
         font-weight: bold;
-        // padding: 0px 20px 35px 0px;
 
         p {
             margin: 0px;
 
+            &.value-title {
+                font-size: 4.5em;
+                font-weight: bold;
+
+                @media all and (max-width: $small) {
+                    font-size: 1.25em;
+                }
+                @media all and (min-width: $small) and (max-width: $medium) {
+                    font-size: 1.75em;
+                }
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        font-size: 6.35em;
+                        font-weight: bold;
+                }
+            }
+
+            &.value-artist {    
+                font-size: 3.5em;
+
+                @media all and (max-width: $small) {
+                    font-size: 1.03em;
+                }
+                @media all and (min-width: $small) and (max-width: $medium) {
+                    font-size: 1.5em;
+                }
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        font-size: 5.2em;
+                }
+            }
+
             .by {
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
         }
 
@@ -54,7 +91,6 @@
 
     &.album {
         font-weight: bold;
-        font-size: 1.5em;
         
         p {
             margin-top: 15px;
@@ -63,15 +99,41 @@
             .label {
                 font-size: 0.8em;
             }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    font-size: 2.75em;
+                    margin-top: 35px;
+                    margin-bottom: 25px;
+
+                    .label {
+                        font-size: 0.8em;
+                    }
+            }
         }
     }
 
-    &.reported-by {
-        text-align: center;
-        
+    &.reported-by {  
+        margin-top: 15px;      
         p {
             margin-top: 0px;
             margin-bottom: 20px;
+            font-weight: bolder;
+            font-size: 0.9em;
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    font-size: 2.2em;
+                    margin-bottom: 40px;
+            }
         }
     }
 
@@ -79,6 +141,14 @@
         text-align: center;
         font-weight: bolder;
 
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                font-size: 2.25em;
+        }
     }
 }
 
@@ -112,6 +182,22 @@
                     .bottom {
                         font-size: 1.25em;
                     }
+
+                    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                        only screen and (   min--moz-device-pixel-ratio: 3),
+                        only screen and (     -o-min-device-pixel-ratio: 3/1),
+                        only screen and (        min-device-pixel-ratio: 3),
+                        only screen and (                min-resolution: 460dpi),
+                        only screen and (                min-resolution: 3dppx) {
+                            .top {
+                                margin-top: 25px;
+                                font-size: 5em;
+                            }
+        
+                            .bottom {
+                                font-size: 3.25em;
+                            }
+                    }
                 }
     
                 .song-input {
@@ -128,6 +214,25 @@
                     outline: none;
                     color: #5d5d5d;
                     box-shadow: -3px -3px 5px 0 rgba(255, 255, 255, 0.8) inset, 3px 3px 5px 0 rgba(0, 0, 0, 0.19) inset !important;
+                
+                    &.login {
+                        margin-top: 10px;
+                    }
+
+                    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                        only screen and (   min--moz-device-pixel-ratio: 3),
+                        only screen and (     -o-min-device-pixel-ratio: 3/1),
+                        only screen and (        min-device-pixel-ratio: 3),
+                        only screen and (                min-resolution: 460dpi),
+                        only screen and (                min-resolution: 3dppx) {
+                            border-radius: 40px;
+                            box-shadow: -10px -10px 13px 0 rgba(255, 255, 255, 0.8) inset, 10px 10px 13px 0 rgba(0, 0, 0, 0.19) inset !important;
+                            font-size: 2.5em;
+
+                            &.login {
+                                margin-top: 30px;
+                            }
+                    }
                 }
             
                 .submit-button {
@@ -138,6 +243,17 @@
                     text-align: center;
                     cursor: pointer; 
                     margin-top: 10px;
+
+                    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                        only screen and (   min--moz-device-pixel-ratio: 3),
+                        only screen and (     -o-min-device-pixel-ratio: 3/1),
+                        only screen and (        min-device-pixel-ratio: 3),
+                        only screen and (                min-resolution: 460dpi),
+                        only screen and (                min-resolution: 3dppx) {
+                            padding: 25px 0px;
+                            margin-top: 30px;
+                            font-size: 3em;
+                    }
                 }
             }
         }

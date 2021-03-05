@@ -24,12 +24,12 @@ class SongCell extends React.Component {
                         <div className='song-inner-image'>
                             <img src={song.artwork} />
                         </div>
-                        <div className='song-inner-text'>
-                            <p className='song-inner-title'>{song.title}</p>
-                            <p className='song-inner-artist'>{song.artist}</p>
-                            <div>
-                            <p className='song-inner-reporter'>reported by {song.owner.username}</p>
-
+                        <div className='song-inner-text-wrapper'>
+                            <div className='song-inner-text'>
+                                <p className='song-inner-title'>{song.title}</p>
+                                <p className='song-inner-artist'>{song.artist}</p>
+                                <div className='ios-gap'></div>
+                                <p className='song-inner-reporter'>reported by {song.owner.username}</p>
                             </div>
                         </div>
 
@@ -39,7 +39,7 @@ class SongCell extends React.Component {
                         </div> */}
                     </div>
                 </div>
-                <div className='column twelve'></div>
+                <div className='column twelve ios-gap'></div>
             </div>
         )
     }

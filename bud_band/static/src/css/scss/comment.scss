@@ -13,6 +13,15 @@
             background-color: rgba(0, 0, 0, 0.01);
             color: #5d5d5d;
 
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    margin-bottom: 50px;
+            }
+
             .comment-inner {
                 margin: 0 auto;
                 width: 90%;
@@ -27,6 +36,16 @@
                             padding-right: 10px;
                             margin: 0px;
                             font-weight: bolder;
+
+                            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                                only screen and (   min--moz-device-pixel-ratio: 3),
+                                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                                only screen and (        min-device-pixel-ratio: 3),
+                                only screen and (                min-resolution: 460dpi),
+                                only screen and (                min-resolution: 3dppx) {
+                                    padding-right: 30px;
+                                    font-size: 2.25em;
+                            }
                         }
         
                         &.timestamp {
@@ -35,6 +54,16 @@
                             font-size: .75em;
                             margin: 0px;
                             float: right;
+
+                            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                                only screen and (   min--moz-device-pixel-ratio: 3),
+                                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                                only screen and (        min-device-pixel-ratio: 3),
+                                only screen and (                min-resolution: 460dpi),
+                                only screen and (                min-resolution: 3dppx) {
+                                    padding-left: 30px;
+                                    font-size: 1.75em;
+                            }
                         }
                     }
                 }
@@ -43,6 +72,15 @@
                     p {
                         padding: 0px;
                         margin: 0px;
+
+                        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                            only screen and (   min--moz-device-pixel-ratio: 3),
+                            only screen and (     -o-min-device-pixel-ratio: 3/1),
+                            only screen and (        min-device-pixel-ratio: 3),
+                            only screen and (                min-resolution: 460dpi),
+                            only screen and (                min-resolution: 3dppx) {
+                                font-size: 2.25em;
+                        }
                     }
                 }
             }
@@ -60,6 +98,18 @@
                 outline: none;
                 color: #5d5d5d;
                 box-shadow: -3px -3px 5px 0 rgba(255, 255, 255, 0.8) inset, 3px 3px 5px 0 rgba(0, 0, 0, 0.19) inset !important;
+            
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        min-height: 200px;
+                        border-radius: 40px;
+                        box-shadow: -8px -8px 10px 0 rgba(255, 255, 255, 0.7) inset, 8px 8px 10px 0 rgba(0, 0, 0, 0.19) inset !important;
+                        font-size: 2.5em;
+                }
             }
 
             .submit-button {
@@ -70,6 +120,17 @@
                 text-align: center;
                 cursor: pointer; 
                 margin-top: 5px;
+
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        padding: 25px 0px;
+                        margin-top: 25px;
+                        font-size: 2.5em;
+                }
             }
         }
     }

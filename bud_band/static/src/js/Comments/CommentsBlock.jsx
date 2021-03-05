@@ -21,7 +21,7 @@ class CommentsBlock extends React.Component {
 
         return (
             <div className="comments-block">
-                <div className='column twelve'></div>
+                <div className='column twelve ios-gap'></div>
 
                 <div className='row'>
                     <div className='column three'></div>
@@ -49,7 +49,7 @@ class CommentsBlock extends React.Component {
                 </div>
                 
                 <div className='row'>
-                    <div className='column twelve empty'></div>
+                    <div className='column twelve empty bottom-gap-ios'></div>
                 </div>
             </div>
         )

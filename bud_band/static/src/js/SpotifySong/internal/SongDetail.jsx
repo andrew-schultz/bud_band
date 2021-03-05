@@ -25,11 +25,11 @@ class SongDetail extends React.Component {
                                 <img src={song.artwork} />
                             </div>
                             <div className='attribute-div title'>
-                                <p className='value'>{song.title} </p>
+                                <p className='value-title'>{song.title} </p> <br />
                                 <p className='value-artist'>{song.artist}</p>
                             </div>
                             <div className='attribute-div album'>
-                                <p> <span className='label'>From the Album</span> {song.album}</p>
+                                <p><span className='label'>From the Album</span><br/>{song.album}</p>
                             </div>
                             <div className='attribute-div reported-by' >
                                 <p className='label'>Reported by:</p> <p className='value'>{song.owner.username}</p>
@@ -37,17 +37,19 @@ class SongDetail extends React.Component {
                         </div>
                     </div>
                     <div className='column one'></div>
+
+                    <div className='column twelve small-ios-gap'></div>
                     
                     <div className='row'>
-                        <div className='column five'></div>
-                        <div className='column two'>
-                            <div className='column content-block shadow clickable rectangle-bubble content-main' onClick={this.openSongLink}>
+                        <div className='column four'></div>
+                        <div className='column four'>
+                            <div className='column content-block shadow clickable rectangle-bubble content-main top-gap' onClick={this.openSongLink}>
                                 <div className='attribute-div link'>
                                     <p className='value link'>Open in Spotify</p>
                                 </div>
                             </div> 
                         </div>
-                        <div className='column five'></div>
+                        <div className='column four'></div>
                     </div>
 
                     <div className='column twelve'></div>

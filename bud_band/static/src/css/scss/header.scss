@@ -11,6 +11,15 @@
     font-weight: bold;
     vertical-align: middle;
 
+    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+        only screen and (   min--moz-device-pixel-ratio: 3),
+        only screen and (     -o-min-device-pixel-ratio: 3/1),
+        only screen and (        min-device-pixel-ratio: 3),
+        only screen and (                min-resolution: 460dpi),
+        only screen and (                min-resolution: 3dppx) {
+            box-shadow: 0px 10px 12px 0 #a9a49bd1;
+    }
+
     .button-wrapper {
         .site-title {
             font-size: 2em;
@@ -20,6 +29,16 @@
             line-height: 72px;
             cursor: pointer;
             color: #5d5d5d;
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    font-size: 5em;
+                    line-height: 182px;
+            }
         }
 
         .back-button-inner {
@@ -30,13 +49,37 @@
             border-radius: 50%;
             text-align: middle;
             margin: 10px;
+            color: #5d5d5d;
             border: 1px solid #F4EDDC;
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    font-size: 4em;
+                    width: 130px;
+                    height: 130px;
+                    margin: 25px;
+                    line-height: 92px;
+            }
 
             p {
                 margin: 0px;
                 padding-top: 5px;
                 text-align: center;
                 vertical-align: middle;
+
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        padding-top: 10px;
+                        font-size: 1.55em;
+                }
             }
         }
 
@@ -47,7 +90,20 @@
             height: 50px;
             border-radius: 50%;
             margin: 10px;
+            color: #5d5d5d;
             border: 1px solid #F4EDDC;
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    font-size: 4em;
+                    height: 130px;
+                    width: 130px;
+                    margin: 25px;
+            }
 
             p {
                 margin: 0px;
@@ -55,6 +111,17 @@
                 padding-left: 2px;
                 text-align: center;
                 vertical-align: middle;
+
+                @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                    only screen and (   min--moz-device-pixel-ratio: 3),
+                    only screen and (     -o-min-device-pixel-ratio: 3/1),
+                    only screen and (        min-device-pixel-ratio: 3),
+                    only screen and (                min-resolution: 460dpi),
+                    only screen and (                min-resolution: 3dppx) {
+                        padding-top: 10px;
+                        padding-left: 5px;
+                        font-size: 1.55em;
+                }
             }
         }
     }

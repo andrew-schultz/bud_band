@@ -2,12 +2,15 @@ require('../css/scss/main.scss')
 
 import React from 'react'
 import { render } from 'react-dom'
+
 import SpotifySong from './SpotifySong'
 import SpotifySongList from './SpotifySongList'
+import AccountLogin from './Account'
 
 const page_apps = {
   SpotifySong,
   SpotifySongList,
+  AccountLogin,
 };
 
 function renderAppInElement(el) {
