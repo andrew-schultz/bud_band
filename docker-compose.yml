@@ -5,6 +5,7 @@ services:
     build: .
     command: gunicorn budband.wsgi:application --bind 0.0.0.0:8000
     volumes:
+      - .:/usr/src/code
       - static_volume:/usr/src/code/staticfiles
       - media_volume:/usr/src/code/mediafiles
     expose:
@@ -35,7 +36,65 @@ services:
     depends_on:
       - web
 
+  # frontend:
+  #   build: .
+  #   command: xe
+
 volumes:
   data:
   static_volume:
   media_volume:
+
+# version: '3.7'
+   
+# services:
+#   web:
+#     build: 
+#       context: .
+#       dockerfile: Dockerfile.prod
+#     # image: 314886279399.dkr.ecr.us-east-1.amazonaws.com/bud_band:web
+#     command: gunicorn budband.wsgi:application --bind 0.0.0.0:8000
+#     volumes:
+#       - static_volume:/usr/src/code/staticfiles
+#       - media_volume:/usr/src/code/mediafiles
+#     expose:
+#       - 8000
+#     env_file:
+#       ./.env.prod
+
+#   nginx-proxy:
+#     container_name: nginx-proxy
+#     build: nginx
+#     # image: 314886279399.dkr.ecr.us-east-1.amazonaws.com/bud_band:nginx-proxy
+#     restart: always
+#     ports: 
+#       - 443:443
+#       - 80:80
+#     volumes:
+#       - static_volume:/usr/src/code/staticfiles
+#       - media_volume:/usr/src/code/mediafiles
+#       - certs:/etc/nginx/certs
+#       - html:/usr/share/nginx/html
+#       - vhost:/etc/nginx/vhost.d
+#       - /var/run/docker.sock:/tmp/docker.sock:ro
+#     depends_on:
+#       - web
+
+#   nginx-proxy-letsencrypt:
+#     image: jrcs/letsencrypt-nginx-proxy-companion
+#     env_file:
+#       - .env.prod.proxy-companion
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock:ro
+#       - certs:/etc/nginx/certs
+#       - html:/usr/share/nginx/html
+#       - vhost:/etc/nginx/vhost.d
+#     depends_on:
+#       - nginx-proxy
+
+# volumes:
+#   static_volume:
+#   media_volume:
+#   certs:
+#   html:
+#   vhost:

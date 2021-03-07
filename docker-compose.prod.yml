@@ -5,7 +5,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.prod
-    # image: 314886279399.dkr.ecr.us-east-1.amazonaws.com/bud_band:web
+    image: 314886279399.dkr.ecr.us-east-1.amazonaws.com/bud_band:web
     command: gunicorn budband.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/usr/src/code/staticfiles
@@ -18,7 +18,7 @@ services:
   nginx-proxy:
     container_name: nginx-proxy
     build: nginx
-    # image: 314886279399.dkr.ecr.us-east-1.amazonaws.com/bud_band:nginx-proxy
+    image: 314886279399.dkr.ecr.us-east-1.amazonaws.com/bud_band:nginx-proxy
     restart: always
     ports: 
       - 443:443

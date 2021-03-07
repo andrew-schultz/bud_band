@@ -18,7 +18,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 from bud_band.admin import bud_band_site
+from bud_band.urls import (
+    account_urlpatterns,
+    comment_urlpatterns,
+    spotify_song_urlpatterns,)
 
 urlpatterns = [
     path('', bud_band_site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('api/v1/account/', include(account_urlpatterns)),
+    path('api/v1/comment/', include(comment_urlpatterns)),
+    path('api/v1/spotify_song/', include(spotify_song_urlpatterns)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

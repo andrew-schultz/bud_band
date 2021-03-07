@@ -1,0 +1,361 @@
+@import './mixins.scss';
+
+.row {
+    width: 100%;
+    min-height: 0px;
+}
+
+.content-main {
+    width: 90%;
+    margin: 0 auto;
+    display: block !important;
+}
+
+.column {
+    margin: 0 auto;
+    display: inline-block;
+    min-height: 1px;
+
+    &.twelve {
+        width: 100%;
+        @media all and (max-width: $small) {
+            min-height: 0px;
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+
+                &.bottom-gap-ios {
+                    height: 350px;
+                }
+
+                &.small-ios-gap {
+                    height: 50px;
+                }
+
+                &.ios-gap {
+                    height: 100px;
+                }
+        }
+
+        &.top-gap {
+            height: 80px;
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 3),
+                only screen and (   min--moz-device-pixel-ratio: 3),
+                only screen and (     -o-min-device-pixel-ratio: 3/1),
+                only screen and (        min-device-pixel-ratio: 3),
+                only screen and (                min-resolution: 460dpi),
+                only screen and (                min-resolution: 3dppx) {
+                    height: 200px;
+            }
+        }
+    }
+
+    &.ten {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 83.3%;
+        }
+        @media all and (min-width: $medium) {
+            width: 83.3%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.nine {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 75%;
+        }
+        @media all and (min-width: $medium) {
+            width: 75%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.eight {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 66.6%;
+        }
+        @media all and (min-width: $medium) {
+            width: 66.6%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.six {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 50%;
+        }
+        @media all and (min-width: $medium) {
+            width: 50%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.five {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 41.5%;
+        }
+        @media all and (min-width: $medium) {
+            width: 41.5%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.four {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 33.3%;
+        }
+        @media all and (min-width: $medium) {
+            width: 33.3%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.three {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 25%;
+        }
+        @media all and (min-width: $medium) {
+            width: 25%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.two {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 15.1%;
+        }
+        @media all and (min-width: $medium) {
+            width: 15.1%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+        }
+    }
+
+    &.one {
+        @media all and (max-width: $small) {
+            min-height: 0px;
+            width: 100%;
+        }
+        @media all and (min-width: $small) and (max-width: $medium) {
+            width: 8.3%;
+        }
+        @media all and (min-width: $medium) {
+            width: 8.3%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                min-height: 0px;
+                width: 100%;
+         }
+    }
+
+    &.content-block {
+        border: 1px solid #F4EDDC;
+        // border: 1px solid rgba(244, 237, 220, 0.2);
+        // border: 1px solid white;
+        border-radius: 20px;
+        // background-color: rgba(0, 0, 0, 0.01);
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                border-radius: 40px;
+         }
+    }
+
+    &.rectangle-bubble {
+        border-radius: 20px ;
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                border-radius: 40px;
+         }
+    }
+
+    &.round-corners {
+        border: 1px solid #F4EDDC;
+        // border: 1px solid rgba(244, 237, 220, 0.2);
+        border-radius: 20px;
+        @media only screen and (-webkit-min-device-pixel-ratio: 3),
+            only screen and (   min--moz-device-pixel-ratio: 3),
+            only screen and (     -o-min-device-pixel-ratio: 3/1),
+            only screen and (        min-device-pixel-ratio: 3),
+            only screen and (                min-resolution: 460dpi),
+            only screen and (                min-resolution: 3dppx) {
+                border-radius: 40px;
+        }
+    }
+
+    &.highlight-background {
+        border: 1px solid #F4EDDC;
+        // border: 1px solid rgba(244, 237, 220, 0.2);
+        background-color: rgba(0, 0, 0, 0.01);
+    }
+
+    &.top-gap {
+        @media all and (min-width: $small) {
+            margin-top: 20px;
+        }
+    }
+}
+
+.shadow {
+    box-shadow: 4px 4px 6px 0 #a9a49bd1, -4px -4px 6px 0 #FFFFFF;
+    // box-shadow: -5px -5px 15px 0 rgba(255, 255, 255, 0.8), 5px 5px 15px 0 rgba(0, 0, 0, 0.19);
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+        only screen and (   min--moz-device-pixel-ratio: 3),
+        only screen and (     -o-min-device-pixel-ratio: 3/1),
+        only screen and (        min-device-pixel-ratio: 3),
+        only screen and (                min-resolution: 460dpi),
+        only screen and (                min-resolution: 3dppx) {
+            box-shadow: 12px 12px 14px 0 #a9a49bd1, -12px -12px 14px 0 #FFFFFF;
+    }
+}
+
+.inverse-shadow {
+    box-shadow: -3px -3px 5px 0 rgba(255, 255, 255, 0.7) inset, 3px 3px 5px 0 rgba(0, 0, 0, 0.19) inset !important;
+    // box-shadow: -0.3rem -0.3rem 0.6rem 0 #a9a49bd1 inset, 0.2rem 0.2rem 0.5rem 0 #FFFFFF inset;
+    // box-shadow: -8px -8px 15px 0 rgba(255, 255, 255, 0.8) inset, -8px -8px 15px 0 rgba(0, 0, 0, 0.19) inset;
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+        only screen and (   min--moz-device-pixel-ratio: 3),
+        only screen and (     -o-min-device-pixel-ratio: 3/1),
+        only screen and (        min-device-pixel-ratio: 3),
+        only screen and (                min-resolution: 460dpi),
+        only screen and (                min-resolution: 3dppx) {
+            box-shadow: -8px -8px 10px 0 rgba(255, 255, 255, 0.7) inset, 8px 8px 10px 0 rgba(0, 0, 0, 0.19) inset !important;
+    }
+}
+
+.clickable  {
+    cursor: pointer;
+}
+
+.clickable:active {
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 1px solid #F4EDDC;
+    // box-shadow: 0.3rem 0.3rem 0.6rem 0 #FFFFFF inset, 0.2rem 0.2rem 0.5rem 0 #a9a49bd1 inset !important;
+    box-shadow: -3px -3px 5px 0 rgba(255, 255, 255, 0.8) inset, 3px 3px 5px 0 rgba(0, 0, 0, 0.19) inset !important;
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+        only screen and (   min--moz-device-pixel-ratio: 3),
+        only screen and (     -o-min-device-pixel-ratio: 3/1),
+        only screen and (        min-device-pixel-ratio: 3),
+        only screen and (                min-resolution: 460dpi),
+        only screen and (                min-resolution: 3dppx) {
+            box-shadow: -8px -8px 10px 0 rgba(255, 255, 255, 0.7) inset, 8px 8px 10px 0 rgba(0, 0, 0, 0.19) inset !important;
+    }
+}

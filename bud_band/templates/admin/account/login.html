@@ -1,0 +1,19 @@
+{% load static %}
+{% load rest_framework %}
+{% load tz %}
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/session.css' %}" /> -->
+        <script src="{% static 'rest_framework/js/coreapi-0.1.1.js' %}"></script>
+        {% render_bundle 'main' css %}
+    </head>
+
+    <body>
+        <div id="AccountLogin" class="__react-root"></div>
+
+        {% render_bundle 'main' js %}
+    </body>
+</html>
