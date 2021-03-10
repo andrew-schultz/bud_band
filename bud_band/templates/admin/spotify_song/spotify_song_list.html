@@ -18,6 +18,7 @@
         {{ next_query|json_script:'next_query' }}
         {{ previous_query|json_script:'previous_query' }}
         {{ count|json_script:'count' }}
+        {{ playlist_id|json_script:'playlist_id' }}
         {% render_bundle 'main' js %}
     </body>
 </html>

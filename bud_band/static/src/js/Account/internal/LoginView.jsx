@@ -39,7 +39,7 @@ class LoginView extends React.Component {
         }
         await api.account.login(request_data, this.headers).then( response => {
             const url = new URL(window.location)
-            var newUrl = `${url.origin}/api/v1/spotify_song/list/?limit=100&offset=0`
+            var newUrl = `${url.origin}/api/v1/playlist/list/?limit=100&offset=0`
             window.location.href = newUrl;
         }).catch(error => {
             this.setState({showError: true})

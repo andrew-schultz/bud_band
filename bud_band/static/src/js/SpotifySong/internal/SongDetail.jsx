@@ -22,7 +22,7 @@ class SongDetail extends React.Component {
                     <div className='column ten'>
                         <div className='column content-block shadow content-main'>
                             <div className='attribute-div image '>
-                                <img src={song.artwork} />
+                                <img className='shadow' src={song.artwork} />
                             </div>
                             <div className='attribute-div title'>
                                 <p className='value-title'>{song.title} </p> <br />
@@ -33,6 +33,7 @@ class SongDetail extends React.Component {
                             </div>
                             <div className='attribute-div reported-by' >
                                 <p className='label'>Reported by:</p> <p className='value'>{song.owner.username}</p>
+                                <div className='ios-gap'></div>
                             </div>
                         </div>
                     </div>

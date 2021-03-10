@@ -10,17 +10,16 @@
         display: block;
         color: #5d5d5d;
 
-        @media only screen and (-webkit-min-device-pixel-ratio: 3),
-            only screen and (   min--moz-device-pixel-ratio: 3),
-            only screen and (     -o-min-device-pixel-ratio: 3/1),
-            only screen and (        min-device-pixel-ratio: 3),
-            only screen and (                min-resolution: 460dpi),
-            only screen and (                min-resolution: 3dppx) {
-                height: 68em;
-        }
+        // @media only screen and (-webkit-min-device-pixel-ratio: 3),
+        //     only screen and (   min--moz-device-pixel-ratio: 3),
+        //     only screen and (     -o-min-device-pixel-ratio: 3/1),
+        //     only screen and (        min-device-pixel-ratio: 3),
+        //     only screen and (                min-resolution: 460dpi),
+        //     only screen and (                min-resolution: 3dppx) {
+        //         height: 68em;
+        // }
 
         .song-inner {
-           
             .song-inner-image {
                 display: inline-block;
                 padding: 20px;
@@ -39,8 +38,13 @@
                     text-align: center;
                     margin: 0 auto;
                     border-radius: 20px;
+                    // border-radius: 12%;
+                    // border-radius: 51%;
+                    // border: 5px solid #bfbaae;
+                    box-sizing: border-box;
                     
                     @media all and (max-width: $small) {
+                        // width: calc(100% - 2em);
                         width: 100%;
                         height: auto;
                     }
@@ -55,7 +59,10 @@
                         only screen and (                min-resolution: 460dpi),
                         only screen and (                min-resolution: 3dppx) {
                             width: 100%;
+                            // width: calc(100% - 2em);
                             height: auto;
+                            border-width: 1.25em;
+                            border-radius:40px;
                     }
                 }
             }
@@ -97,6 +104,12 @@
                             margin-top: 0px;
                             margin-bottom: 0px;
                         }
+
+                        .song-inner-description {
+                            font-size: 0.8em;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                        }
     
                         .song-inner-reporter {
                             font-size: 0.75em;
@@ -122,7 +135,13 @@
                             font-size: 1em;
                             margin-top: 0px;
                             flex-grow: 1;
-                        }                  
+                        }
+                        
+                        .song-inner-description {
+                            font-size: 0.8em;
+                            margin-top: 0px;
+                            flex-grow: 1;
+                        }
 
                         .song-inner-reporter {
                             font-size: 0.75em;
@@ -139,8 +158,9 @@
                         only screen and (                min-resolution: 460dpi),
                         only screen and (                min-resolution: 3dppx) {
                             width: 90%;
-                            padding: 0 5%;
-        
+                            padding: 0 5% 5% 5%;
+                            height: fit-content;
+
                             .song-inner-title {
                                 font-size: 3.75em;
                                 font-weight: bold;
@@ -150,6 +170,12 @@
             
                             .song-inner-artist {
                                 font-size: 2.5em;
+                                margin-top: 0px;
+                                margin-bottom: 0px;
+                            }
+
+                            .song-inner-description {
+                                font-size: 1.8em;
                                 margin-top: 0px;
                                 margin-bottom: 0px;
                             }

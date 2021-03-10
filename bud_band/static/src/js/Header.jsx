@@ -10,14 +10,22 @@ class SSHeader extends React.Component {
     }
 
     handleAdd = () => {
+        const {addType, playlistId} = this.props
         const url = new URL(window.location)
-        var newUrl = `${url.origin}/api/v1/spotify_song/create/`
+
+        if (addType == 'playlist') {
+            var newUrl = `${url.origin}/api/v1/playlist/create/`
+        }
+        else if (addType == 'spotify_song') {          
+            var newUrl = `${url.origin}/api/v1/spotify_song/create/?playlist_id=${playlistId}`
+        }
+
         window.location.href = newUrl;
     }
 
     handleHome = () => {
         const url = new URL(window.location)
-        var newUrl = `${url.origin}/api/v1/spotify_song/list/?limit=10&offset=0`
+        var newUrl = `${url.origin}/api/v1/playlist/list/?limit=100&offset=0`
         window.location.href = newUrl;
     }
 

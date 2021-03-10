@@ -12,11 +12,10 @@
     </head>
 
     <body>
-        <div id="SpotifySong" class="__react-root"></div>
+        <div id="PlaylistList" class="__react-root"></div>
 
-        {{ song_data|json_script:'song_data' }}
+        {{ playlists_data|json_script:'playlists_data' }}
         {{ comments|json_script:'comments' }}
-        {{ playlist_id|json_script:'playlist_id' }}
         {% render_bundle 'main' js %}
     </body>
 </html>

@@ -16,9 +16,11 @@ class SpotifySongSerializer(serializers.ModelSerializer):
             'artwork',
             'uri',
             'link',
+            'playlist_id',
         )
     
     owner = UserSerializer()
+    playlist_id = serializers.IntegerField()
 
 
 class SpotifySongExtendedSerializer(SpotifySongSerializer):
@@ -35,10 +37,13 @@ class SpotifySongExtendedSerializer(SpotifySongSerializer):
             'uri',
             'link',
             'comments',
+            'playlist_id',
         )
 
     comments = SpotifySongCommentSerializer(many=True)
+    playlist_id = serializers.IntegerField()
 
 
 class SpotifyPostSerializer(serializers.Serializer):
     uri = serializers.CharField()
+    playlist_id = serializers.IntegerField()

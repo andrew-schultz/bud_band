@@ -8,6 +8,9 @@ __pycache__*
 .env.prod.db
 .env.prod.proxy-companion
 .env.dev.proxy-companion
+.env.staging
+.env.staging.db
+.env.staging.proxy-companion
 node_modules*
 frontend/node_modules*
 frontend/node_modules/*

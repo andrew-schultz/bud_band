@@ -1,6 +1,6 @@
 from django.urls import path
 
-from bud_band.views import account, comment, spotify_song
+from bud_band.views import account, comment, playlist, spotify_song
 
 
 # index_urlpatterns = [
@@ -14,6 +14,15 @@ account_urlpatterns = [
 
 comment_urlpatterns = [
     path('', comment.SpotifyCommentView.as_view(), name='comment'),
+]
+
+playlist_urlpatterns = [
+    # path('<int:id>/', playlist.PlaylistAPIView.as_view(), name='playlist'),
+    # path('<int:id>/edit/', playlist.PlaylistEditView.as_view(), name='playlist-edit'),
+    path('create/', playlist.PlaylistAddView.as_view(), name='playlist-add'),
+    path('', playlist.PlaylistCreateView.as_view(), name='playlist-create'),
+    path('list/', playlist.PlaylistListView.as_view(), name='playlist-list'),
+    path('list_api/', playlist.PlaylistListAPIView.as_view(), name='playlist-list-api')
 ]
 
 spotify_song_urlpatterns = [

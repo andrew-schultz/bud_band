@@ -15,9 +15,11 @@ class SpotifySongList {
     const next_query = JSON.parse(document.getElementById('next_query').textContent);
     const previous_query = JSON.parse(document.getElementById('previous_query').textContent);
     const count = JSON.parse(document.getElementById('count').textContent);
+    const playlist_id = JSON.parse(document.getElementById('playlist_id').textContent);
 
     const session = React.createElement(ListView, {
         songs,
+        playlist_id,
         next_query,
         previous_query,
         count

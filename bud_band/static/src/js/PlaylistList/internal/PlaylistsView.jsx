@@ -2,20 +2,19 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as utils from '../../utils.jsx'
 import api from '../../api'
-import SongCell from './SongCell'
 import SSHeader from '../../Header.jsx'
+import PlaylistCell from './PlaylistCell.jsx'
 
 
-class ListView extends React.Component {
+class PlaylistsView extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            songs: [],
+            playlists: [],
             limit: 100,
             offset: 100,
             more: true,
             loading: true,
-            playlistId: this.props.playlist_id
         }
 
         this.csrftoken = null;
@@ -28,13 +27,14 @@ class ListView extends React.Component {
             'X-CSRFToken': this.csrftoken
         }
 
-        this.setState({songs: this.props.songs, loading: false})
+        this.setState({playlists: this.props.playlists, loading: false})
         
         document.addEventListener('scroll', this.handleScroll)
     }
     
+
     handleScroll = async (e) => {
-        const {limit, offset, more, songs, loading, playlistId} = this.state
+        const {limit, offset, more, playlists, loading} = this.state
 
         if (!loading && more) {
             while(true) {
@@ -48,22 +48,21 @@ class ListView extends React.Component {
                 // let's add more data
                 const params = {
                     limit: limit,
-                    offset: offset,
-                    playlist_id: playlistId,
+                    offset: offset
                 }
-                await api.spotifySong.fetch(params, this.headers).then(response => {
-                    var existingSongs = response.data.songs_data;
+                await api.playlist.fetch(params, this.headers).then(response => {
+                    var existingPlaylists = response.data.playlists_data;
                     var isThereMore = false
 
                     if (response.data.next_query) {
                         isThereMore = true
                     }
 
-                    songs.push(existingSongs);
-                    var newSongs = songs.flat()
-                    
+                    playlists.push(existingPlaylists);
+                    var newPlaylists = playlists.flat()
+
                     this.setState({
-                        songs: newSongs,
+                        playlists: newPlaylists,
                         offset: offset + limit,
                         loading: false,
                         more: isThereMore
@@ -75,21 +74,22 @@ class ListView extends React.Component {
         }
     }
 
+
     render() {
         const {
-            songs,
+            playlists
         } = this.state
 
-        if (!songs) {
+        if (!playlists) {
             return <div></div>
         }
 
         return (
             <div>
-                <SSHeader addType='spotify_song' playlistId={this.props.playlist_id}></SSHeader>
+                <SSHeader addType='playlist'></SSHeader>
                 <div className='column twelve top-gap'></div>
                 <div>
-                    {songs.map((song, i) => (<SongCell key={i} song={song} />))}
+                    {playlists.map((playlist, i) => (<PlaylistCell key={i} playlist={playlist} />))}
                 </div>
                 <div className='column twelve bottom-gap-ios'></div>
             </div>
@@ -97,4 +97,4 @@ class ListView extends React.Component {
     }
 }
     
-export default ListView
+export default PlaylistsView

@@ -13,10 +13,12 @@ class SpotifySong {
 
     const song = JSON.parse(document.getElementById('song_data').textContent);
     const comments = JSON.parse(document.getElementById('comments').textContent);
+    const playlist_id = JSON.parse(document.getElementById('playlist_id').textContent);
 
     const session = React.createElement(SongView, {
         song,
-        comments
+        comments,
+        playlist_id,
     })
   
     ReactDOM.render(session, elem)

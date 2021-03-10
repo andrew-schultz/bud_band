@@ -42,6 +42,10 @@ spotify = spotipy.Spotify(auth_manager=auth_manager)
 # spotify = spotipy.Spotify(auth=token)
 
 
+def build_id_from_uri(uri):
+    object_id = uri.split(':')[-1]
+    return object_id
+
 def get_track(uri):
     try:
         track = client.track(uri)
@@ -50,6 +54,19 @@ def get_track(uri):
 
     return track
 
+def generate_playlist(name, description=''):
+    try:
+        playlist = spotify.user_playlist_create(
+            user=settings.SPOTIFY_USER_ID,
+            name=name,
+            public=True,
+            collaborative=False,
+            description=description
+        )
+    except SpotifyException as e:
+        raise e
+
+    return playlist
 
 def add_track_to_playlist(track_uri, playlist_id):
     track_id = track_uri.split(':')[-1]

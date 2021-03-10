@@ -1,10 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# hook up to the spotify api
-# - new object form will accept a spotify_uri
-#   - look up in spotify api with uri
-#   - hopefully it returns artist, title, album, artwork (etc...)
+from bud_band.models.playlist import Playlist
 
 
 class SpotifySong(models.Model):
@@ -18,6 +14,7 @@ class SpotifySong(models.Model):
     artwork = models.URLField(max_length=255, blank=True, null=True)
     uri = models.CharField(max_length=255, blank=True, null=True)
     link = models.URLField(max_length=255, blank=True, null=True)
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='songs', blank=True, null=True)
 
 
 def build_uri_from_link(link):

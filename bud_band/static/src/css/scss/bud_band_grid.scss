@@ -41,6 +41,10 @@
                 &.ios-gap {
                     height: 100px;
                 }
+
+                &.ios-padding {
+                    height: 20px;
+                }
         }
 
         &.top-gap {
@@ -312,7 +316,7 @@
 }
 
 .shadow {
-    box-shadow: 4px 4px 6px 0 #a9a49bd1, -4px -4px 6px 0 #FFFFFF;
+    box-shadow: 4px 4px 6px 0 #a9a49bd1, -4px -4px 6px 0 #fffdf1;
     // box-shadow: -5px -5px 15px 0 rgba(255, 255, 255, 0.8), 5px 5px 15px 0 rgba(0, 0, 0, 0.19);
 
     @media only screen and (-webkit-min-device-pixel-ratio: 3),
@@ -321,7 +325,7 @@
         only screen and (        min-device-pixel-ratio: 3),
         only screen and (                min-resolution: 460dpi),
         only screen and (                min-resolution: 3dppx) {
-            box-shadow: 12px 12px 14px 0 #a9a49bd1, -12px -12px 14px 0 #FFFFFF;
+            box-shadow: 12px 12px 14px 0 #a9a49bd1, -12px -12px 14px 0 #fffdf1;
     }
 }
 

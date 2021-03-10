@@ -1,35 +1,37 @@
 import * as React from 'react'
 
-class SongCell extends React.Component {
-    openSongLink = () => {
-        const {song} = this.props;
+class PlaylistCell extends React.Component {
+    openPlaylistLink = () => {
+        const {playlist} = this.props;
         const url = new URL(window.location)
-        var newUrl = `${url.origin}/api/v1/spotify_song/${song.id}/edit/`
+        var newUrl = `${url.origin}/api/v1/spotify_song/list/?limit=100&offset=0&playlist_id=${playlist.id}`
         window.location.href = newUrl;
     }
 
     render() {
         const {
-            song,
+            playlist,
         } = this.props
 
-        if (!song.id) {
+        if (!playlist.id) {
             return <div></div>
         }
 
         return (
             <div className='song-cell-container'>
-                <div className='column content-block twelve song-cell shadow round-corners clickable' onClick={this.openSongLink}>
+                <div className='column twelve song-cell highlight-background shadow round-corners clickable' onClick={this.openPlaylistLink}>
                     <div className='song-inner'>
                         <div className='song-inner-image'>
-                            <img className='shadow' src={song.artwork} />
-                        </div>
+                            {playlist.artwork ? <img src={playlist.artwork} /> : ''}
+                        </div> 
+                        {/* <div className='column twelve ios-padding'></div>} */}
+                        
                         <div className='song-inner-text-wrapper'>
                             <div className='song-inner-text'>
-                                <p className='song-inner-title'>{song.title}</p>
-                                <p className='song-inner-artist'>{song.artist}</p>
+                                <p className='song-inner-title'>{playlist.name}</p>
+                                <p className='song-inner-description'>{playlist.description}</p>
                                 <div className='ios-gap'></div>
-                                <p className='song-inner-reporter'>reported by {song.owner.username}</p>
+                                <p className='song-inner-reporter'>reported by {playlist.user.username}</p>
                             </div>
                         </div>
 
@@ -45,4 +47,4 @@ class SongCell extends React.Component {
     }
 }
 
-export default SongCell
+export default PlaylistCell

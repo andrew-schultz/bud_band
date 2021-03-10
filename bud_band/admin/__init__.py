@@ -3,9 +3,10 @@ from django.contrib.auth.models import User, Group
 from django.urls import path
 
 from .auth import GroupAdmin, UserAdmin
+from .playlist import PlaylistAdmin
 from .spotify_song import SpotifySongAdmin
 
-from bud_band.models import SpotifySong
+from bud_band.models import Playlist, SpotifySong
 
 class BudBandAdminSite(AdminSite):
     site_header = 'Bud Band Admin'
@@ -15,6 +16,7 @@ class BudBandAdminSite(AdminSite):
 
 bud_band_site = BudBandAdminSite()
 
+bud_band_site.register(Playlist, PlaylistAdmin)
 bud_band_site.register(SpotifySong, SpotifySongAdmin)
 
 # AUTHENTICATION AND AUTHORIZATION

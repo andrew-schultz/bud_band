@@ -49,6 +49,6 @@ class LoginTemplateView(APIView):
 
     def get(self, request):
         if request.user and request.user.username:
-            return redirect('/api/v1/spotify_song/list/?limit=10&offset=0')
+            return redirect('/api/v1/playlist/list/?limit=100&offset=0')
 
         return Response()

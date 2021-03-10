@@ -17,12 +17,14 @@ class SongView extends React.Component {
             comments: [],
             modalOpen: false,
             newSong: {
-                uri: ''
+                uri: '',
+                playlist_id: this.props.playlist_id,
             },
             newComment: {
                 song_id: this.props.song.id,
-                text: ''
-            }
+                text: '',
+            },
+            playlistId: this.props.playlist_id
         }
 
         this.csrftoken = null;
@@ -56,7 +58,6 @@ class SongView extends React.Component {
         newComment.text = ''
 
         this.setState({comments: comments, newComment: newComment})
-        // if success: reload
         // if error: show error
     }
 
@@ -69,7 +70,8 @@ class SongView extends React.Component {
     handleSongSubmit = async () => {
         const {newSong} = this.state
         var request_data = {
-            uri: newSong.uri
+            uri: newSong.uri,
+            playlist_id: newSong.playlist_id
         }
         const {data} = await api.spotifySong.create(request_data, this.headers)
 
@@ -88,12 +90,13 @@ class SongView extends React.Component {
             newComment,
             newSong,
             song,
-            comments
+            comments,
+            playlistId
         } = this.state
 
         return (
             <div>
-                <SSHeader></SSHeader>
+                <SSHeader addType='spotify_song' playlistId={playlistId}></SSHeader>
                 <div className='column twelve top-gap'></div>
                 {(song && song.id) ? 
                     <SongDetail song={song}/> : 
