@@ -103,9 +103,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 env = environ.Env()
 # reading .env file
 environ.Env.read_env()
@@ -115,6 +112,16 @@ SPOTIFY_CLIENT_SECRET = env('SPOTIFY_CLIENT_SECRET')
 JWT_SECRET = env('JWT_SECRET')
 BUDBAND_PLAYLIST_ID = env('BUDBAND_PLAYLIST_ID')
 SPOTIFY_USER_ID = env('SPOTIFY_USER_ID')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 # REQUIRED_CONFIG = required_config = {
 #     'SPOTIFY_CLIENT_ID': os.environ.get('SPOTIFY_CLIENT_ID'),
