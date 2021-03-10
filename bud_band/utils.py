@@ -31,7 +31,6 @@ def encode_uuid(uuid):
         uuid = uuid_lib.UUID(uuid)
     return base64.urlsafe_b64encode(uuid.bytes).decode()[:22]
 
-
 def decode_uuid(encoded):
     """Decode a UUID from a 22-character string"""
     if len(encoded) != 22:

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from bud_band.models.playlist import Playlist
+from bud_band.services.bud_band_email import send_budband_emails
 
 
 class SpotifySong(models.Model):
@@ -16,6 +17,12 @@ class SpotifySong(models.Model):
     link = models.URLField(max_length=255, blank=True, null=True)
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='songs', blank=True, null=True)
 
+
+    def save(self, *args, **kwargs):
+        song = super(SpotifySong, self).save(*args, **kwargs)
+        users = User.objects.exclude(id=self.owner_id)
+        send_budband_emails(resource=self, users=users, reporter=self.owner)
+        return song
 
 def build_uri_from_link(link):
     # sample link pattern: https://open.spotify.com/track/4XoYeolVYTiddO9wZLXLgl?si=V6s-mtoZSYaqrG8yHWY5uA
