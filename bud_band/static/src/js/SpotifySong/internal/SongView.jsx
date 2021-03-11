@@ -24,7 +24,8 @@ class SongView extends React.Component {
                 song_id: this.props.song.id,
                 text: '',
             },
-            playlistId: this.props.playlist_id
+            playlistId: this.props.playlist_id,
+            loading: false
         }
 
         this.csrftoken = null;
@@ -69,6 +70,7 @@ class SongView extends React.Component {
 
     handleSongSubmit = async () => {
         const {newSong} = this.state
+        this.setState({loading: true})
         var request_data = {
             uri: newSong.uri,
             playlist_id: newSong.playlist_id
@@ -81,7 +83,10 @@ class SongView extends React.Component {
             window.history.pushState({}, '', newUrl)
 
             newSong.uri = ''
-            this.setState({song: data, newSong: newSong})
+            this.setState({song: data, newSong: newSong, loading: false})
+        } else {
+            // there was an error, wooooops
+            this.setState({loading: false})
         }
     }
 
@@ -91,7 +96,8 @@ class SongView extends React.Component {
             newSong,
             song,
             comments,
-            playlistId
+            playlistId,
+            loading
         } = this.state
 
         return (
@@ -104,6 +110,7 @@ class SongView extends React.Component {
                         newSong={newSong}
                         handleSongChange={this.handleSongChange}
                         onSubmit={this.handleSongSubmit}
+                        loading={loading}
                     />
                 }
                 {(song && song.id) ? 

@@ -7,7 +7,8 @@ class SongForm extends React.Component {
 
     render() {
         const {
-            newSong
+            newSong,
+            loading,
         } = this.props
 
         return (
@@ -33,7 +34,14 @@ class SongForm extends React.Component {
                                 <div>
                                     <div className='column nine'></div>
                                     <div className='column three'>
-                                        <div className='submit-button column content-block shadow clickable rectangle-bubble' onClick={this.props.onSubmit}>Submit</div>
+                                        { loading ?
+                                            <div className='submit-button column content-block shadow rectangle-bubble'>
+                                                <p className='loader'></p>
+                                            </div> :
+                                            <div className='submit-button column content-block shadow clickable rectangle-bubble' onClick={this.props.onSubmit}>
+                                                <p>Submit</p> 
+                                            </div> 
+                                        }
                                     </div>
                                 </div>
                             </div>

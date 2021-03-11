@@ -10,7 +10,8 @@ class PlaylistForm extends React.Component {
         this.state = {
             playlist: {
                 name: '',
-                description: ''
+                description: '',
+                loading: false
             }
         }
     }
@@ -31,6 +32,7 @@ class PlaylistForm extends React.Component {
 
     onSubmit = async () => {
         const {playlist} = this.state
+        this.setState({loading: true})
         var request_data = {
             name: playlist.name,
             description: playlist.description
@@ -42,13 +44,17 @@ class PlaylistForm extends React.Component {
             var newUrl = `${url.origin}/api/v1/spotify_song/list/?limit=100&offset=0&playlist_id=${data.id}`
             // window.history.pushState({}, '', newUrl)
             window.location.href = newUrl;
+        } else {
+            // there was an error oooops
+            this.setState({loading: false})
         }
     }
     
 
     render() {
         const {
-            playlist
+            playlist,
+            loading,
         } = this.state
 
         return (
@@ -92,7 +98,14 @@ class PlaylistForm extends React.Component {
                                     <div>
                                         <div className='column nine'></div>
                                         <div className='column three'>
-                                            <div className='submit-button column content-block shadow clickable rectangle-bubble' onClick={this.onSubmit}>Submit</div>
+                                            { loading ?
+                                                <div className='submit-button column content-block shadow rectangle-bubble'>
+                                                    <p className='loader'></p>
+                                                </div> :
+                                                <div className='submit-button column content-block shadow clickable rectangle-bubble' onClick={this.onSubmit}>
+                                                    <p>Submit</p> 
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
