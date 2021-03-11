@@ -30,11 +30,11 @@ class PlaylistCreateView(APIView):
         except SpotifyException as e:
             raise e
 
-        playlist = Playlist(name=name, description=description)
+        playlist = Playlist(name=name, user_id=request.user.id, description=description)
         playlist.uri = playlist_data['uri']
-        playlist.link = track_info['external_urls']['spotify']
+        playlist.link = playlist_data['external_urls']['spotify']
 
-        images = playlist_info['images']
+        images = playlist_data['images']
         height = 0
         for i in images:
             if i['height'] > height:

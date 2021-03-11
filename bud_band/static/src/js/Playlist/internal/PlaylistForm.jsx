@@ -39,11 +39,9 @@ class PlaylistForm extends React.Component {
 
         if (data && data.id) {
             const url = new URL(window.location)
-            var newUrl = `${url.origin}/api/v1/spotify_song/list/?limit=100&offset=0&playlist_i=${data.id}`
-            window.history.pushState({}, '', newUrl)
-
-            // playlist.uri = ''
-            // this.setState({songs: data, playlist: playlist})
+            var newUrl = `${url.origin}/api/v1/spotify_song/list/?limit=100&offset=0&playlist_id=${data.id}`
+            // window.history.pushState({}, '', newUrl)
+            window.location.href = newUrl;
         }
     }
     

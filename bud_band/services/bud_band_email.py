@@ -1,7 +1,8 @@
 import re
 from django.contrib.auth.models import User
 from django.core.mail import send_mail, send_mass_mail
-from budband.settings import EMAIL_HOST_USER
+from django.template.loader import render_to_string
+from budband.settings import EMAIL_HOST_USER, URL_HOST
 
 
 def get_resource_type(resource):
@@ -19,12 +20,27 @@ def get_resource_type(resource):
 def send_budband_emails(resource, users, reporter):
     user_emails = [user.email for user in users]
     resource_type = get_resource_type(resource)
-    # lets include a link eh? That would be dope
-    # look into best practice, but maybe we can figure out a little formatting brilliance too?
+
+    if resource_type == 'Playlist':
+        link = f'https://{URL_HOST}/api/v1/spotify_song/list/?limit=100&offset=0&playlist_id={resource.id}'
+    elif resource_type == 'Song':
+        link = f'https://{URL_HOST}/api/v1/spotify_song/{resource.id}/edit/'
+    
+    msg = f'{reporter.username} just added a new {resource_type}'
+    msg_html = render_to_string(
+        'email/new_object.html',
+        {
+            'reporter': reporter,
+            'resource_type': resource_type,
+            'resource': resource,
+            'link': link
+        }
+    )
+
     send_mail(
         f'BudBand Update',
-        f'{reporter.username} just added a new {resource_type}',
+        msg,
         EMAIL_HOST_USER,
         user_emails,
-        # ['as173171@gmail.com'],
+        html_message=msg_html,
         fail_silently=False)

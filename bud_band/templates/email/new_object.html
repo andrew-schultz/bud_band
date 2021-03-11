@@ -1,0 +1,23 @@
+{% load static %}
+{% load rest_framework %}
+{% load tz %}
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% render_bundle 'main' css %}
+    </head>
+    <body>
+        <div style="width:100%; background-color:#F4EDDC; height:500px">
+            <div style="text-align:center; font-size: 2em;">
+                <p>
+                    {{ reporter.username }} just added a new {{ resource_type }}
+                </p>
+            </div>
+            <div style="text-align:center;">
+                <a href="{{ link }}">Open in BudBand</a>
+            </div>
+        </div>
+    </body>
+</html>

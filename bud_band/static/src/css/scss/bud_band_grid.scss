@@ -313,6 +313,21 @@
             margin-top: 20px;
         }
     }
+
+    &.center-text {
+        text-align: center;
+    }
+
+    &.placeholder-text {
+        display: block;
+        font-size: 2em;
+        width: 90%;
+        height: 50px;
+        padding: 7% 0 5% 0;
+        margin: 0 auto;
+        text-align: center;
+        color: #5d5d5d;
+    }
 }
 
 .shadow {

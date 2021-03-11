@@ -89,7 +89,13 @@ class ListView extends React.Component {
                 <SSHeader addType='spotify_song' playlistId={this.props.playlist_id}></SSHeader>
                 <div className='column twelve top-gap'></div>
                 <div>
-                    {songs.map((song, i) => (<SongCell key={i} song={song} />))}
+                    {
+                        songs.length ?
+                        songs.map((song, i) => (<SongCell key={i} song={song} />)) :
+                        <div className='column twelve'>
+                            <div className='column inverse-shadow round-corners placeholder-text'>No Songs</div>
+                        </div>
+                    }
                 </div>
                 <div className='column twelve bottom-gap-ios'></div>
             </div>

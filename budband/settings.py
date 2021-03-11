@@ -112,6 +112,7 @@ SPOTIFY_CLIENT_SECRET = env('SPOTIFY_CLIENT_SECRET')
 JWT_SECRET = env('JWT_SECRET')
 BUDBAND_PLAYLIST_ID = env('BUDBAND_PLAYLIST_ID')
 SPOTIFY_USER_ID = env('SPOTIFY_USER_ID')
+URL_HOST = env('URL_HOST')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
