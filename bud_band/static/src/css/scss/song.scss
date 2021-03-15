@@ -199,6 +199,13 @@
         -ms-transform: translateY(-52%);
         transform: translateY(-52%);
 
+        &.playlist {
+            position: relative;
+            top: auto;
+            transform: translateY(0%);
+            -ms-transform: translateY(0%);
+        }
+        
         .song-form-wrapper {
             display: block;
             margin: 0 auto;

@@ -62,8 +62,8 @@ class PlaylistForm extends React.Component {
                 <SSHeader addType='playlist'></SSHeader>
                 <div className='column twelve top-gap'></div>
                 <div className='song-form-container'>
-                <div className='song-form-inner-container'>
-                    <div className='column three'></div>
+                    <div className='song-form-inner-container playlist'>
+                        <div className='column three'></div>
                         <div className='column six'>
                             <div className='song-form-wrapper column content-block shadow'>
                                 <div className='song-form-inner-wrapper'>
